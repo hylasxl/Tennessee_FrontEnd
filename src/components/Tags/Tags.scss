@@ -1,0 +1,28 @@
+.tag-container{
+    height: 535px !important;
+    background-color: #fafafa;
+    img{
+        width: 100%;
+        height:auto;
+        object-fit: fill !important;
+    }
+    .button-learn-more{
+        width: 200px;
+        height: 40px;
+        border: none;
+        color: #ffffff;
+        font-weight: bold;
+        background-color: #d31245;
+    }
+
+    .top-line{
+        color: #1a2d59;
+    }
+
+    .top-line::before{
+        content: "—";
+        display: block;
+        font-weight: 400;
+        font-size: 24px;
+    }
+}
