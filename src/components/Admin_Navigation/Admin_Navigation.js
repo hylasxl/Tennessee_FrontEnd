@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 
 
-const Admin_Navigation = () => {
+const AdminNavigation = () => {
     return (
         <>
             <Navbar bg="dark" data-bs-theme="dark">
@@ -21,4 +21,4 @@ const Admin_Navigation = () => {
     );
 }
 
-export default Admin_Navigation;
+export default AdminNavigation;

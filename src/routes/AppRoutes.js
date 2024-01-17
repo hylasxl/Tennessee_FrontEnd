@@ -1,9 +1,9 @@
-import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
+import { Route, Routes} from "react-router-dom";
 import HomePage from "../pages/Home/Home";
 import LoginPage from "../pages/Login/Login";
 import PrivateRoutes from "./PrivateRoutes";
 import AccountPage from "../pages/Account/Account";
-import Admin_AccountManagementPage from "../pages/Admin/Admin_AccountManagement";
+import AdminAccountManagementPage from "../pages/Admin/Admin_AccountManagement";
 const AppRoutes = () => {
   return (
     <>
@@ -18,7 +18,7 @@ const AppRoutes = () => {
         
       </Routes>
       <PrivateRoutes path='/account' element={<AccountPage/>}></PrivateRoutes>
-      <PrivateRoutes path='/admin/account' element={<Admin_AccountManagementPage/>}></PrivateRoutes>
+      <PrivateRoutes path='/admin/account' element={<AdminAccountManagementPage/>}></PrivateRoutes>
     </>
   );
 };
