@@ -1,15 +1,15 @@
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import "./Login.scss";
-import { useState } from "react";
+import { useState,useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify"
 import { login } from "../../service/userService";
-
+import { UserContext } from "../../context/UserContext";
 
 const LoginPage = (props) => {
 
-    
+    const {loginContext} = useContext(UserContext);
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -43,20 +43,28 @@ const LoginPage = (props) => {
 
         const response = await login(username,password);
 
-        console.log(response);
-
-        if(response && response.data && +(await response).data.EC === 1){
+        
+        if(response  && +(await response).EC === 1){
+            
             toast.success("Login Successfully")
             let data = {
                 isAuthenticated: true,
-                token: 'fake'
+                token: response.DT.token,
+                username:response.DT.username,
+                user:{
+                    userId : response.DT.user.userId,
+                    userPermissions: response.DT.user.userPermissions,
+                    userData: response.DT.user.userData
+                }
             }
-            sessionStorage.setItem('account',JSON.stringify(data))
-            navigate('/');
+            loginContext(data);
+            navigate('/'); 
+            
+            
             
         }
         
-        if(response && response.data && +(await response).data.EC !== 1){
+        if(response && response && +(await response).EC !== 1){
             toast.error("Incorrect username or password")
         }
 
@@ -65,6 +73,7 @@ const LoginPage = (props) => {
     const handlePressEnter = (event) => {
         if (event.keyCode === 13) handleLogin();
     }
+    
 
     return (
         <>

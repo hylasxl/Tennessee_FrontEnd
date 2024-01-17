@@ -1,0 +1,47 @@
+
+
+.change-btn{
+    width: 300px;
+    height: 40px;
+    border: none;
+    background-color: #1a2d59;
+    color: white;
+    opacity: 0.7;
+
+    
+}
+
+.change-btn:hover{
+    opacity: 1;
+}
+
+.user-img{
+    border-radius: 50%;
+}
+
+.avt-btn{
+    border:none;
+    background-color: black;
+    color:white;
+    border-radius: 5px; 
+    width: 200px !important;
+}
+
+.changePassword{
+    width: 180px;
+    height: 40px;
+    border:none;
+    outline: none;
+    background-color: #ffcc00;
+    font-weight: 600;
+}
+
+.deactivate{
+    width: 180px;
+    height: 40px;
+    color:white;
+    border:none;
+    outline: none;
+    background-color: #d31245;
+    font-weight: 600;
+}

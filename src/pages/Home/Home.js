@@ -1,15 +1,19 @@
 import Header from "../../components/Header/Header";
-import React from "react";
+import React, { useEffect, useState,useContext } from "react";
 import Tags from "../../components/Tags/Tags"
 import Footer from "../../components/Footer/Footer";
 import "./Home.scss";
-
+// import { UserContext } from "../../context/UserContext";
+import { getUserData } from "../../service/userService";
 
 const HomePage = (props) => {
     const mainPicture = require("../../assets/main-img.jpeg");
+    
+   
+
     return (
         <>
-            <Header />
+            <Header/>
             <img
                 className="mainPic w-100 h-auto position-relative"
                 src={mainPicture}
