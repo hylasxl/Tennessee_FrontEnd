@@ -6,7 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 
 const EducationalAffairNavigation = () =>{
 
-    const CourseManagementChildrens = ['/educational-affair/course']
+    const CourseManagementChildrens = ['/educational-affair/course','/educational-affair/course/create-new-course']
 
     return  (
     <>

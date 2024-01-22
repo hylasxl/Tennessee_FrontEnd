@@ -1,0 +1,13 @@
+
+.page-container{
+
+    position: relative;
+    min-height: 100vh;
+
+    .button-section{
+        position: fixed;
+        bottom: 30px;
+        right: 50px;
+        z-index: 4000;
+    }
+}

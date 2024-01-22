@@ -8,6 +8,7 @@ import AdminAccountManagementUserInfo from "../pages/Admin/Admin_AccountManageme
 import AdminCourseManagement from "../pages/Admin/Admin_CourseManagement"
 import AdminClassManagement from "../pages/Admin/Admin_ClassManagement";
 import EducationalAffairCourseManagement from "../pages/Educational_Affair/Educational_Affair_Course_Management";
+import EducationalAffairCreateCourse from "../pages/Educational_Affair/Educational_Affair_Create_Course";
 
 const AppRoutes = () => {
   return (
@@ -30,7 +31,7 @@ const AppRoutes = () => {
       <PrivateRoutes path='/admin/course' element={<AdminCourseManagement />}></PrivateRoutes>
       <PrivateRoutes path='/admin/class' element={<AdminClassManagement />}></PrivateRoutes>
       <PrivateRoutes path='/educational-affair/course' element={<EducationalAffairCourseManagement />}></PrivateRoutes>
-
+      <PrivateRoutes path='/educational-affair/course/create-new-course' element={<EducationalAffairCreateCourse/>}></PrivateRoutes>
     </>
   );
 };

@@ -204,8 +204,8 @@ export const Account = () => {
             <div className="account-info-container d-flex flex-column">
                 <div className="row w-100">
                     <div className="col col-8 personal-infomartion p-5">
-                        <h3 className="mb-5">Personal Infomation</h3>
-                        <div className="user-infomation">
+                        <h3 className="mb-5">Personal Information</h3>
+                        <div className="user-information">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">
@@ -335,7 +335,7 @@ export const Account = () => {
                                     className="change-btn"
                                     onClick={() => handleChangeUserData()}
                                 >
-                                    Change Infomation
+                                    Change Information
                                 </button>
                             )}
                         </div>

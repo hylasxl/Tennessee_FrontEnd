@@ -29,7 +29,7 @@ const AdminAccountManagementUserInfo = () => {
             <AdminNavigation />
             {userData && (
                 <div className='mt-5 ms-5 ps-3 pe-3'>
-                    <h3 className="page-title" style={{textDecoration:'underline'}}>User infomation</h3>
+                    <h3 className="page-title" style={{textDecoration:'underline'}}>User information</h3>
                     <div className="table-data mt-5 d-flex flex-column gap-3">
                         <div className="data-field d-flex ">
                             <div className="field-name" style={{ color: '#1a2d59', minWidth: '200px', fontSize: '18px' }}>Account ID: </div>
