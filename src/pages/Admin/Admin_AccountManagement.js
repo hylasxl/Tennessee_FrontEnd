@@ -1,28 +1,14 @@
-import AdminNavigation from '../../components/Admin_Navigation/Admin_Navigation'
-import {fetchAccount} from '../../service/accountService'
-import { useState, useEffect } from 'react'
+import AdminNavigation from '../../components/Navigation/Admin_Navigation/Admin_Navigation'
+import AccountTable from '../../components/Tables/AccountTable';
 
-const AdminAccountManagementPage = (props)=>{
-
-    const [allUserData, setAllUserData] = useState({})
-    
-    const handleFetchAllUserAccount = async () => {
-        return await fetchAccount();
-    }
-    useEffect(()=>{
-        const data = handleFetchAllUserAccount().then((res)=>{
-            console.log(res);
-        })
-        setAllUserData(data)
-    },[])
-
+const AdminAccountManagementPage = (props) => {
 
     
     return (<>
-
-
-        <AdminNavigation/>
-
+        <AdminNavigation />
+        <div className='mt-5 ps-3 pe-3'>
+            <AccountTable/>
+        </div>
     </>)
 }
 

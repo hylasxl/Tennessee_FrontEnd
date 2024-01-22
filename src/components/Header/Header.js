@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React from "react";
 import "./Header.scss";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import Navigation from "../Navigation/Navigation";
@@ -6,26 +6,7 @@ import Navigation from "../Navigation/Navigation";
 
 const Header = (props) => {
     const Logo = require("../../assets/Logo.png");
-    const page = props.page || "normalPage";
-    const pageTitle = props.title || "HOME";
-
-    // // const [account,setAccount] = useState('')
-    // const { user } = useContext(UserContext)
-
-    // const [username,setUsername] = useState(null)
     
-    // useEffect(()=>{
-    //     let username = user && user.username ? user.username : null;
-    //     setUsername(username)
-    // },[user])
-
-    
-    
-    
-    
-    
-    
-
     return (
         <>
             <div className="container mt-3">

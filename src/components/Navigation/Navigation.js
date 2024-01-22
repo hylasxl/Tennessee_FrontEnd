@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import './Navigation.scss'
 import { UserContext } from '../../context/UserContext';
-import { useContext, useState, useEffect, Fragment } from 'react';
+import { useContext, useState, useEffect} from 'react';
 
 import { logout } from '../../service/userService';
 import { useNavigate } from 'react-router-dom';
@@ -55,6 +55,10 @@ const Navigation = () => {
         navigate('/admin/account')
     }
 
+    const handleEducationalAffairClick = ()=>{
+        navigate('/educational-affair/course')
+    }
+
     return (
         <Navbar expand="lg" className="bg-1a2d59 w-100 container-fluid">
             <Container>
@@ -80,6 +84,12 @@ const Navigation = () => {
                                         <span style={{cursor:'pointer'}} onClick={()=>handleAdminClick()}>Administration</span>
                                     </div>)
                                 }
+                                {accountType === 2 &&
+                                    (<div>
+                                        <span style={{cursor:'pointer'}} onClick={()=>handleEducationalAffairClick()}>Educational Affair Management</span>
+                                    </div>)
+                                }
+                                
                                 <NavDropdown title="Options" id="basic-nav-dropdown">
                                     <NavDropdown.Item className='dropdown-items'>
                                         <span onClick={()=> handleAccountClick()} style={{ color: 'black' }}>Account</span>

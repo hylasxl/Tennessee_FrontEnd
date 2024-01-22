@@ -19,7 +19,7 @@ instance.interceptors.request.use(function (config) {
         // authentication (token related issues)
         case 401: {
             toast.error("Unauthorized User. 401")
-            return err.response.data;
+            return err;
         }
 
         // forbidden (permission related issues)
@@ -37,7 +37,8 @@ instance.interceptors.request.use(function (config) {
         // not found
         case 404: {
             toast.error("Not found. 404")
-            return Promise.reject(err.message);
+            console.log(err);
+            return err;
         }
 
         // conflict

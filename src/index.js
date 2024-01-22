@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import { UserProvider } from './context/UserContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'air-datepicker/air-datepicker.css';
+import "ag-grid-community/styles/ag-grid.css"; 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

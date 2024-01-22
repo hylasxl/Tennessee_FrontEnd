@@ -1,7 +1,10 @@
-.spinner-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
+$font-family_1: "Roboto Slab", serif;
+
+body {
+	font-family: $font-family_1;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
 }

@@ -1,11 +1,6 @@
-import {Route, redirect,Routes, useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { useContext, useEffect} from "react";
-import { UserContext } from "../context/UserContext";
+import {Route,Routes } from "react-router-dom";
 
 const PrivateRoutes = (props) =>{
-    const navigate = useNavigate()
-    const { user }= useContext(UserContext);
         return (
             <Routes>
                 <Route path={props.path} element={props.element}/>
