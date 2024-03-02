@@ -1,13 +1,20 @@
+$color_1: white;
+$background-color_1: red;
 
-.page-container{
+.page-container {
+	position: relative;
+	height: 100vh;
+	.button-section {
+        margin: 20px 0;
+		position: absolute;
+		top: 60px;
+		right: 50px;
+		// z-index: 4000;
+        background-color: #1a2d59;
+	}
 
-    position: relative;
-    min-height: 100vh;
-
-    .button-section{
-        position: fixed;
-        bottom: 30px;
-        right: 50px;
-        z-index: 4000;
-    }
+	.page-content{
+		margin-top: 40px;
+		padding: 0 20px ;
+	}
 }

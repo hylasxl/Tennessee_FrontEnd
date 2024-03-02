@@ -206,15 +206,15 @@ export const Account = () => {
                     <div className="col col-8 personal-infomartion p-5">
                         <h3 className="mb-5">Personal Information</h3>
                         <div className="user-information">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">
+                            <div className="input-group mb-3">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text" id="basic-addon1">
                                         Firstname
                                     </span>
                                 </div>
                                 <input
                                     type="text"
-                                    class="form-control"
+                                    className="form-control"
                                     placeholder="Firstname"
                                     aria-label="Username"
                                     aria-describedby="basic-addon1"
@@ -224,15 +224,15 @@ export const Account = () => {
                                     }
                                 />
                             </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">
+                            <div className="input-group mb-3">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text" id="basic-addon1">
                                         Lastname
                                     </span>
                                 </div>
                                 <input
                                     type="text"
-                                    class="form-control"
+                                    className="form-control"
                                     placeholder="Lastname"
                                     aria-label="Username"
                                     aria-describedby="basic-addon1"
@@ -242,15 +242,15 @@ export const Account = () => {
                                     }
                                 />
                             </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">
+                            <div className="input-group mb-3">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text" id="basic-addon1">
                                         Email
                                     </span>
                                 </div>
                                 <input
                                     type="text"
-                                    class="form-control"
+                                    className="form-control"
                                     placeholder="Email"
                                     aria-label="Username"
                                     aria-describedby="basic-addon1"
@@ -259,15 +259,15 @@ export const Account = () => {
                                     readOnly
                                 />
                             </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">
+                            <div className="input-group mb-3">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text" id="basic-addon1">
                                         Phone
                                     </span>
                                 </div>
                                 <input
                                     type="text"
-                                    class="form-control"
+                                    className="form-control"
                                     placeholder="Phone"
                                     aria-label="Username"
                                     aria-describedby="basic-addon1"
@@ -275,9 +275,9 @@ export const Account = () => {
                                     onChange={(e) => handleInputChange("phone", e.target.value)}
                                 />
                             </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">
+                            <div className="input-group mb-3">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text" id="basic-addon1">
                                         Gender
                                     </span>
                                 </div>
@@ -295,9 +295,9 @@ export const Account = () => {
                                     <option value="Other">Other</option>
                                 </select>
                             </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">
+                            <div className="input-group mb-3">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text" id="basic-addon1">
                                         Date of Birth
                                     </span>
                                 </div>
@@ -311,15 +311,15 @@ export const Account = () => {
                                     value={userData.dateofBirth}
                                 />
                             </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">
+                            <div className="input-group mb-3">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text" id="basic-addon1">
                                         Address
                                     </span>
                                 </div>
                                 <input
                                     type="text"
-                                    class="form-control"
+                                    className="form-control"
                                     placeholder="Address"
                                     aria-label="Username"
                                     aria-describedby="basic-addon1"

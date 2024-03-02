@@ -3,41 +3,45 @@ import {
     MaterialReactTable,
     useMaterialReactTable,
 } from 'material-react-table';
-import { MenuItem, ListItemIcon } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
 import { fetchAllCourse } from "../../service/courseService";
 import { Box, Typography } from '@mui/material';
-import { forEach } from "lodash";
-import { Rocket } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
+import qs from "qs"
 
+import MenuItem from "@mui/material";
 
 const CourseTable = (props) => {
-    const navigate = useNavigate();
+    const navigate = useNavigate()
+
     const [allCourse, setAllCourse] = useState([])
     const [isLoad, setIsLoad] = useState(false)
-
 
     const handleGetAllCourse = async () => {
         return await fetchAllCourse();
     }
 
-    const Status = ['Approved', 'RequestForEditting', 'Pending', 'Rejected']
+    const eduStatus = ['Approved', 'RequestForEditting', 'Pending', 'Rejected']
+    const adminStatus = ['Pending', 'RequestForEditting', 'Approved', 'Rejected']
 
     useEffect(() => {
         if (!isLoad) {
             handleGetAllCourse().then((res) => {
                 setAllCourse(res.DT)
                 setIsLoad(true)
-
             })
         }
     }, [isLoad])
 
-    const sortingFns = {
+    const sortingFns = props.role === "edu" ? {
         approveStatus: (row1, row2) => {
-            return Status.indexOf(row1.approveStatus) - Status.indexOf(row2.approveStatus);
-        },
-    };
+            return eduStatus.indexOf(row1.approveStatus) - eduStatus.indexOf(row2.approveStatus);
+        }
+    } : {
+        approveStatus: (row1, row2) => {
+            return adminStatus.indexOf(row1.approveStatus) - adminStatus.indexOf(row2.approveStatus);
+        }
+    }
+
 
     const columns = useMemo(
         () => [
@@ -46,6 +50,7 @@ const CourseTable = (props) => {
                 header: 'ID',
                 size: 10,
                 enableColumnFilter: false,
+
             },
             {
                 accessorKey: 'courseName',
@@ -67,7 +72,7 @@ const CourseTable = (props) => {
                 header: 'Status',
                 size: 40,
                 filterVariant: 'multi-select',
-                filterSelectOptions: Status,
+                filterSelectOptions: props.role === "edu" ? eduStatus : adminStatus,
             },
             {
                 accessorKey: 'description',
@@ -76,31 +81,48 @@ const CourseTable = (props) => {
             },
 
         ],
-        [],
+        []
     );
 
     const table = useMaterialReactTable({
         columns,
         data: allCourse,
         enableColumnOrdering: true,
-        enableStickyHeader: true,
         enableColumnPinning: true,
+        enableStickyHeader: true,
         sortingFns,
-        enableExpandAll: false, //disable expand all button
+        enableExpandAll: true,
+        enableRowActions: true,
         initialState: {
-            columnPinning: { left: ['mrt-row-actions','id'] },
+            columnPinning: { left: ['mrt-row-actions', 'id'] },
             sorting: [
                 {
                     id: 'approveStatus',
-                    desc: false
+                    desc: props.role === "edu" ? false : true
                 }
             ]
         },
-        enableRowActions: true,
+        muiTableBodyProps: {
+            sx: {
 
+            }
+        },
+        muiTableBodyRowProps: ({ row }) => ({
+            onClick: (event) => {
+                // const data = JSON.stringify(row.original)
+                const data = qs.stringify(row.original)
+                if(props.role === "admin"){
+                    navigate(`/admin/course/detail/${data}`)
+                }
+                
+            },
+            sx: {
+                cursor: 'pointer', //you might want to change the cursor too when adding an onClick
+            },
+        }),
         isMultiSortEvent: () => true,
         renderRowActionMenuItems: ({ closeMenu, row }) => [
-
+            
         ],
         muiExpandButtonProps: ({ row }) => ({
             sx: {
@@ -115,13 +137,14 @@ const CourseTable = (props) => {
                     sx={{
                         display: 'grid',
                         margin: 'auto',
-                        gridTemplateColumns: '1fr',
-                        width: '100%',
+                        gridTemplateColumns: '1fr 1fr',
+                        width: '75%',
                     }}
                 >
+
                     {lessons.map((lessons, index) => (
                         <div key={index}>
-                        <Typography>Lesson #{lessons.orderofLesson}: {lessons.lessonName}</Typography>
+                            <Typography>Lesson {lessons.orderofLesson}: {lessons.lessonName}</Typography>
                         </div>
                     ))}
                 </Box>
@@ -132,7 +155,8 @@ const CourseTable = (props) => {
     return (
         <>
             <div>
-                <MaterialReactTable table={table} />
+                <MaterialReactTable table={table} enableStickyHeader
+                    muiTableContainerProps={{ sx: { maxHeight: '50px' } }} />
             </div>
         </>
     )

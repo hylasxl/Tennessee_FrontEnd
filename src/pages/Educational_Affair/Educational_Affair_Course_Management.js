@@ -16,12 +16,12 @@ const EducationalAffairCourseManagement = () => {
 
             <div className="page-container">
                 <EducationalAffairNavigation />
-                <div className='mt-5 ps-3 pe-3'>
-                    <CourseTable />
+                <div style={{margin: '80px 20px'}}>
+                    <CourseTable role='edu'/>
                 </div>
 
                 <div className="button-section">
-                    <Button variant="contained" sx={{ backgroundColor: '#1a2d59' }} onClick={() => handleCreateCourseClick()}>Create new course</Button>
+                    <Button variant="contained" onClick={() => handleCreateCourseClick()}>Create new course</Button>
                 </div>
             </div>
 

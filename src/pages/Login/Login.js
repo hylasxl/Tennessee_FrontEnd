@@ -81,8 +81,8 @@ const LoginPage = (props) => {
 
             <div className="container-fluid w-100 d-flex justify-content-center mt-5 mb-5">
                 <div className="login-form w-50 p-2">
-                    <p class="text-center fw-bold  fs-5">Tennessee Language Center</p>
-                    <p class="text-center fw-bold fst-italic fs-4">Sign in</p>
+                    <p className="text-center fw-bold  fs-5">Tennessee Language Center</p>
+                    <p className="text-center fw-bold fst-italic fs-4">Sign in</p>
                     
                         <div className="mb-3 me-3 ms-3">
                             <p className="mt-2 mb-2 fw-bold">Username</p>
@@ -96,7 +96,7 @@ const LoginPage = (props) => {
                                 onChange={(event) => { setUsername(event.target.value) }}
                                 
                             ></input>
-                            <div id="emailHelp" class="form-text">
+                            <div id="emailHelp" className="form-text">
                                 We'll never share your private account with anyone else.
                             </div>
                         </div>

@@ -10,16 +10,24 @@ import { AccountCircle, Send } from '@mui/icons-material';
 import DoDisturbIcon from '@mui/icons-material/DoDisturb';
 import { useNavigate } from 'react-router-dom';
 import SettingsBackupRestoreIcon from '@mui/icons-material/SettingsBackupRestore';
+import { fetchAccountByType } from '../../service/accountService';
 
-const AccountTable = () => {
+const AccountTable = (props) => {
 
 
     const navigate = useNavigate()
     const [allUserData, setAllUserData] = useState([])
     const [isLoad, setIsLoad] = useState(false)
 
+    const accountType = props.accountType || "all";
+
     const handleFetchAllUserAccount = async () => {
-        return await fetchAccount();
+        if (accountType === "all") {
+            return await fetchAccount();
+        }
+        else {
+            return await fetchAccountByType(accountType)
+        }
     }
 
     useEffect(() => {

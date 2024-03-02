@@ -35,7 +35,7 @@ const HomePage = (props) => {
                 </div>
                 <div className="chairman-comment d-flex flex-column justify-content-center align-items-center p-4 gap-4">
                     <h5>A MESSAGE FROM THE PRINCIPLE</h5>
-                    <div class="speech">
+                    <div className="speech">
                         <p>
                             Tennessee Language Center is a welcoming Catholic community
                             renowned for its integrity and creative learning approaches that
