@@ -1,7 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-
-
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { UserProvider } from './context/UserContext';
@@ -9,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'air-datepicker/air-datepicker.css';
 import "ag-grid-community/styles/ag-grid.css"; 
 import 'react-datepicker/dist/react-datepicker.css';
+import './App.scss'
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

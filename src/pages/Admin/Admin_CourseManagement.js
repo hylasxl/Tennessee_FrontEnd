@@ -1,5 +1,5 @@
 import AdminNavigation from "../../components/Navigation/Admin_Navigation/Admin_Navigation";
-import CourseTable from "../../components/Tables/CourseTable";
+import CourseTable from "../../components/Tables/courseTable";
 
 
 const AdminCourseManagement = ()=>{

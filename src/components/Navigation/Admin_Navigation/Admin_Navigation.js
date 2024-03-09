@@ -23,7 +23,7 @@ const AdminNavigation = (props) => {
                 <Container>
                     <Navbar.Brand href="/">Home</Navbar.Brand>
                     <Nav className="me-auto">
-                        <Nav.Link href="/admin/account" className={AccountManagementChildrens.includes(window.location.pathname)?'active':''}>Account</Nav.Link>
+                        <Nav.Link href="/admin/account" className={AccountManagementChildrens.includes(window.location.pathname)?'active':''}>Accounts</Nav.Link>
                         <Nav.Link href="/admin/course" className={CourseManagementChildrens.includes(window.location.pathname)?'active':''}>Course Requests</Nav.Link>
                         
                     </Nav>

@@ -1,8 +1,9 @@
 import { Route, Routes } from "react-router-dom";
+
 import HomePage from "../pages/Home/Home";
 import LoginPage from "../pages/Login/Login";
-import PrivateRoutes from "./PrivateRoutes";
 import AccountPage from "../pages/Account/Account";
+import NotFound from "../pages/404NotFound";
 
 import AdminAccountManagementPage from "../pages/Admin/Admin_AccountManagement";
 import AdminAccountManagementUserInfo from "../pages/Admin/Admin_AccountManagement_UserInfo"
@@ -14,7 +15,13 @@ import EducationalAffairCourseManagement from "../pages/Educational_Affair/Educa
 import EducationalAffairCreateCourse from "../pages/Educational_Affair/Educational_Affair_Create_Course";
 import EducationalAffairClassManagement from "../pages/Educational_Affair/Educational_Affair_Class_Management";
 import EducationalAffairLecturerManagement from "../pages/Educational_Affair/Educational_Affair_Lecturer_Management";
-
+import EducationalAffairStudentManagement from "../pages/Educational_Affair/Educational_Affair_Student_Management";
+import EducationalAffairRoomManagement from "../pages/Educational_Affair/Educational_Affair_Room_Management";
+import EducationalAffairStudentAddNew from "../pages/Educational_Affair/Educational_Affair_Student_AddNew";
+import EducationalAffairLecturerAddNew from "../pages/Educational_Affair/Educational_Affair_Lecturer_AddNew";
+import EducationalAffairStudentWaitingList from "../pages/Educational_Affair/Educational_Affair_Student_WaitingList";
+import EducationalAffairLecturerWaitingList from "../pages/Educational_Affair/Educational_Affair_Lecturer_WaitingList";
+import EducationalAffairClassAddNeww from "../pages/Educational_Affair/Educational_Affair_Class_AddNew";
 
 const AppRoutes = () => {
   return (
@@ -28,20 +35,27 @@ const AppRoutes = () => {
         />
 
 
-      <Route path='/account' element={<AccountPage />}></Route>
-      <Route path='/admin/account' element={<AdminAccountManagementPage />}></Route>
-      <Route path='/admin/account/user-info/:username' element={<AdminAccountManagementUserInfo />}>
-      </Route>
-      <Route path='/admin/course' element={<AdminCourseManagement />}></Route>
-      <Route path='admin/course/detail/:data' element={<AdminCourseDetail/>}></Route>
-      <Route path='/admin/class' element={<AdminClassManagement />}></Route>
+        <Route path='/account' element={<AccountPage />} />
+        <Route path='/admin/account' element={<AdminAccountManagementPage />} />
+        <Route path='/admin/account/user-info/:username' element={<AdminAccountManagementUserInfo />} />
+        <Route path='/admin/course' element={<AdminCourseManagement />} />
+        <Route path='admin/course/detail/:data' element={<AdminCourseDetail />} />
+        <Route path='/admin/class' element={<AdminClassManagement />} />
 
 
-      <Route path='/educational-affair/course' element={<EducationalAffairCourseManagement />}></Route>
-      <Route path='/educational-affair/course/create-new-course' element={<EducationalAffairCreateCourse/>}></Route>
-      <Route path='/educational-affair/class' element={<EducationalAffairClassManagement/>}></Route>
-      <Route path="/educational-affair/lecturer" element={<EducationalAffairLecturerManagement/>}></Route>
-      
+        <Route path='/educational-affair/course' element={<EducationalAffairCourseManagement />} />
+        <Route path='/educational-affair/course/create-new-course' element={<EducationalAffairCreateCourse />} />
+        <Route path='/educational-affair/class' element={<EducationalAffairClassManagement />} />
+        <Route path="/educational-affair/lecturer" element={<EducationalAffairLecturerManagement />} />
+        <Route path="/educational-affair/student" element={<EducationalAffairStudentManagement />} />
+        <Route path="/educational-affair/room" element={<EducationalAffairRoomManagement />} />
+        <Route path="/educational-affair/student/add-new-student" element={<EducationalAffairStudentAddNew />} />
+        <Route path="/educational-affair/student/waiting-list" element={<EducationalAffairStudentWaitingList />} />
+        <Route path="/educational-affair/lecturer/add-new-lecturer" element={<EducationalAffairLecturerAddNew />} />
+        <Route path="/educational-affair/lecturer/waiting-list" element={<EducationalAffairLecturerWaitingList />} />
+        <Route path="/educational-affair/class/create-new-class" element={<EducationalAffairClassAddNeww />} />
+
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );

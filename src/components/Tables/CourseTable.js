@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import qs from "qs"
 
 import MenuItem from "@mui/material";
+import { all } from "axios";
 
 const CourseTable = (props) => {
     const navigate = useNavigate()
@@ -16,21 +17,9 @@ const CourseTable = (props) => {
     const [allCourse, setAllCourse] = useState([])
     const [isLoad, setIsLoad] = useState(false)
 
-    const handleGetAllCourse = async () => {
-        return await fetchAllCourse();
-    }
 
     const eduStatus = ['Approved', 'RequestForEditting', 'Pending', 'Rejected']
     const adminStatus = ['Pending', 'RequestForEditting', 'Approved', 'Rejected']
-
-    useEffect(() => {
-        if (!isLoad) {
-            handleGetAllCourse().then((res) => {
-                setAllCourse(res.DT)
-                setIsLoad(true)
-            })
-        }
-    }, [isLoad])
 
     const sortingFns = props.role === "edu" ? {
         approveStatus: (row1, row2) => {
@@ -42,6 +31,21 @@ const CourseTable = (props) => {
         }
     }
 
+    const handleGetAllCourse = async () => {
+        return await fetchAllCourse();
+    }
+
+    useEffect(() => {
+        if (!isLoad) {
+            handleGetAllCourse().then((res) => {
+                const waitTime = Math.floor(Math.random() * (2000 - 250) + 250)
+                setTimeout(() => {
+                    setAllCourse(res.DT)
+                    setIsLoad(true)
+                }, waitTime)
+            })
+        }
+    }, [isLoad])
 
     const columns = useMemo(
         () => [
@@ -87,12 +91,14 @@ const CourseTable = (props) => {
     const table = useMaterialReactTable({
         columns,
         data: allCourse,
-        enableColumnOrdering: true,
-        enableColumnPinning: true,
         enableStickyHeader: true,
         sortingFns,
         enableExpandAll: true,
         enableRowActions: true,
+        state: {
+            isLoad,
+            showProgressBars: !isLoad
+        },
         initialState: {
             columnPinning: { left: ['mrt-row-actions', 'id'] },
             sorting: [
@@ -111,10 +117,10 @@ const CourseTable = (props) => {
             onClick: (event) => {
                 // const data = JSON.stringify(row.original)
                 const data = qs.stringify(row.original)
-                if(props.role === "admin"){
+                if (props.role === "admin") {
                     navigate(`/admin/course/detail/${data}`)
                 }
-                
+
             },
             sx: {
                 cursor: 'pointer', //you might want to change the cursor too when adding an onClick
@@ -122,7 +128,7 @@ const CourseTable = (props) => {
         }),
         isMultiSortEvent: () => true,
         renderRowActionMenuItems: ({ closeMenu, row }) => [
-            
+
         ],
         muiExpandButtonProps: ({ row }) => ({
             sx: {

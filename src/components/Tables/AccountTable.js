@@ -1,5 +1,5 @@
 
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useCallback, useContext, useRef } from 'react';
 import { fetchAccount } from '../../service/accountService'
 import {
     MaterialReactTable,
@@ -11,37 +11,52 @@ import DoDisturbIcon from '@mui/icons-material/DoDisturb';
 import { useNavigate } from 'react-router-dom';
 import SettingsBackupRestoreIcon from '@mui/icons-material/SettingsBackupRestore';
 import { fetchAccountByType } from '../../service/accountService';
+import { UserContext } from '../../context/UserContext';
 
 const AccountTable = (props) => {
-
-
-    const navigate = useNavigate()
+    
+    const DEFAULT_ACCOUNT_TYPE_ID = 0
+    const { user } = useContext(UserContext)
     const [allUserData, setAllUserData] = useState([])
     const [isLoad, setIsLoad] = useState(false)
-
+    let currentAccessAccountTypeId = useRef(DEFAULT_ACCOUNT_TYPE_ID)
+    
     const accountType = props.accountType || "all";
+    const navigate = useNavigate()
+    
+    const genderList = ['Male', 'Female', 'Other']
+    const accountTypeList = ['Admin', 'Educational Affair', 'Lecturer', 'Student']
+    const accountStateList = ['Accessible', 'Restricted']
 
-    const handleFetchAllUserAccount = async () => {
+    const handleFetchAllUserAccount = useCallback(async () => {
         if (accountType === "all") {
             return await fetchAccount();
         }
         else {
             return await fetchAccountByType(accountType)
         }
-    }
+
+    }, [accountType])
+
+    useEffect(() => {
+        if (user && user.user && user.user.userPermissions) {
+            currentAccessAccountTypeId.current = user.user.userPermissions.id || DEFAULT_ACCOUNT_TYPE_ID
+            console.log(currentAccessAccountTypeId.current);
+        }
+    }, [user])
 
     useEffect(() => {
         if (!isLoad) {
             handleFetchAllUserAccount().then((res) => {
-                setAllUserData(res.DT)
-                setIsLoad(true)
+                const waitTime = Math.floor(Math.random() * (2000 - 250) + 250)
+                console.log(waitTime);
+                setTimeout(() => {
+                    setAllUserData(res.DT)
+                    setIsLoad(true)
+                }, waitTime)
             })
         }
-    }, [isLoad])
-
-    const genderList = ['Male', 'Female', 'Other']
-    const accountTypeList = ['Admin', 'Educational Affair', 'Lecturer', 'Student']
-    const accountStateList = ['Accessible', 'Restricted']
+    }, [isLoad, handleFetchAllUserAccount])
 
     const columns = useMemo(
         () => [
@@ -114,15 +129,18 @@ const AccountTable = (props) => {
         [],
     );
 
+    
 
     const table = useMaterialReactTable({
         columns,
         data: allUserData,
-        enableColumnOrdering: true,
         enableStickyHeader: true,
-        enableColumnPinning: true,
         initialState: { columnPinning: { left: ['mrt-row-actions'] } },
         enableRowActions: true,
+        state: {
+            isLoad,
+            showProgressBars: !isLoad
+        },
         isMultiSortEvent: () => true,
         renderRowActionMenuItems: ({ closeMenu, row }) => [
             <MenuItem
@@ -153,12 +171,12 @@ const AccountTable = (props) => {
                 Send Email
             </MenuItem>,
             <MenuItem
-                key={1}
+                key={2}
                 onClick={() => {
 
                     closeMenu();
                 }}
-                sx={{ m: 0, display: row.getValue('accountState') === "Accessible" ? "inline-block" : "none" }}
+                sx={{ m: 0, display: row.getValue('accountState') === "Accessible" && +currentAccessAccountTypeId.current === 1 ? "inline-block" : "none" }}
             >
                 <ListItemIcon>
                     <DoDisturbIcon />
@@ -166,12 +184,12 @@ const AccountTable = (props) => {
                 Restrict
             </MenuItem>,
             <MenuItem
-                key={1}
+                key={3}
                 onClick={() => {
 
                     closeMenu();
                 }}
-                sx={{ m: 0, display: row.getValue('accountState') === "Restricted" ? "inline-block" : "none" }}
+                sx={{ m: 0, display: row.getValue('accountState') === "Restricted" && +currentAccessAccountTypeId.current === 1 ? "inline-block" : "none" }}
             >
                 <ListItemIcon>
                     <SettingsBackupRestoreIcon />
@@ -186,8 +204,5 @@ const AccountTable = (props) => {
             <MaterialReactTable table={table} />
         </div>
     );
-
-
-
 }
 export default AccountTable

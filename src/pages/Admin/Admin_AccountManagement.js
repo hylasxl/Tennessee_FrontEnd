@@ -1,5 +1,5 @@
 import AdminNavigation from '../../components/Navigation/Admin_Navigation/Admin_Navigation'
-import AccountTable from '../../components/Tables/AccountTable';
+import AccountTable from '../../components/Tables/accountTable';
 
 const AdminAccountManagementPage = (props) => {
 

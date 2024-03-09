@@ -1,23 +1,22 @@
-// import axios from "axios"
 import axios from "../setup/axios";
 
 const login = async (username, password) => {
-    return await axios.post('/api/login', {
+    return await axios.post('/api/account/login', {
         username, password
     })
 }
 
 const logout = async () => {
-    return axios.post('/api/logout')
+    return axios.post('/api/account/logout')
 }
 const getUserData = async (userID) => {
-    return await axios.post('/api/user/getdata', {
+    return await axios.post('/api/account/fetch-user-data', {
         userID
     })
 };
 
 const getUserAccount = async () => {
-    return await axios.get('/api/user/getaccount')
+    return await axios.get('/api/account/fetch-user-account')
 };
 
 const updateUserData = async (userId,
@@ -28,7 +27,7 @@ const updateUserData = async (userId,
     dateofBirth,
     address,
     username, accountTypeId) => {
-    return await axios.put('/api/user/update', {
+    return await axios.put('/api/account/update-user-data', {
         userId,
         firstName,
         lastName,
@@ -42,11 +41,10 @@ const updateUserData = async (userId,
 }
 
 const changePassword = async (username, oldPassword, newPassword) => {
-    return await axios.put('/api/user/changepassword', {
+    return await axios.put('/api/account/account-update-password', {
         username, oldPassword, newPassword
     })
 }
-
 
 export {
     login,

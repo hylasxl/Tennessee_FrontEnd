@@ -1,6 +1,7 @@
 import EducationalAffairNavigation from "../../components/Navigation/Educational_Affair_Navigation/Educational_Affair_Navigation";
-import CourseTable from "../../components/Tables/CourseTable";
+import CourseTable from "../../components/Tables/courseTable";
 import { Button } from "@mui/material";
+import { Add } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import './Education_Affair.scss'
 
@@ -16,12 +17,11 @@ const EducationalAffairCourseManagement = () => {
 
             <div className="page-container">
                 <EducationalAffairNavigation />
-                <div style={{margin: '80px 20px'}}>
-                    <CourseTable role='edu'/>
-                </div>
-
-                <div className="button-section">
-                    <Button variant="contained" onClick={() => handleCreateCourseClick()}>Create new course</Button>
+                <div className="page-content">
+                    <div style={{ display: 'flex', gap: '20px', justifyContent: 'flex-end', margin:'-20px 0 20px 0'}}>
+                        <Button style={{fontFamily:'Roboto Slab'}} variant="contained" color="primary" startIcon={<Add />} onClick={() => handleCreateCourseClick()}>Create new course</Button>
+                    </div>
+                    <CourseTable role='edu' />
                 </div>
             </div>
 

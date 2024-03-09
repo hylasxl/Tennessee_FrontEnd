@@ -2,7 +2,7 @@ import axios from '../setup/axios'
 
 
 const getAllLanguage = async () => {
-    return await axios.get('/api/language/get-all-language')
+    return await axios.get('/api/language/fetch-all-languages')
 }
 
 

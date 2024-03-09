@@ -35,7 +35,6 @@ const UserProvider = ({children}) =>{
 
     useEffect(()=>{
             fetchUser()
-        
     },[])
 
     return(

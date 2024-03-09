@@ -1,16 +1,17 @@
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import "./Login.scss";
-import { useState,useContext } from "react";
+import { useState,useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify"
 import { login } from "../../service/userService";
 import { UserContext } from "../../context/UserContext";
+import { useLogout } from "../../utils/useLogOut";
 
 const LoginPage = (props) => {
 
-    const {loginContext} = useContext(UserContext);
-
+    const {loginContext, user} = useContext(UserContext);
+    const handleLogout = useLogout()
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -18,6 +19,11 @@ const LoginPage = (props) => {
         isValidEmail: true,
         isValidPassword: true
     }
+    // useEffect(()=>{
+    //     if(user && user.isAuthenticated === true){
+    //         handleLogout()
+    //     }
+    // },[user])
 
     const [valueInput, setValueInput] = useState(defaultValidInput);
     const navigate = useNavigate();
@@ -87,10 +93,10 @@ const LoginPage = (props) => {
                         <div className="mb-3 me-3 ms-3">
                             <p className="mt-2 mb-2 fw-bold">Username</p>
                             <input
-                                autocomplete="off"
+                                autoComplete="off"
                                 type="text"
                                 name="username"
-                                class={valueInput.isValidEmail ? 'form-control' : 'is-invalid form-control'}
+                                className={valueInput.isValidEmail ? 'form-control' : 'is-invalid form-control'}
                                 id="accountID"
                                 value={username}
                                 onChange={(event) => { setUsername(event.target.value) }}
@@ -103,10 +109,10 @@ const LoginPage = (props) => {
                         <div className="mb-3 me-3 ms-3">
                             <p className="mt-2 mb-2 fw-bold">Password</p>
                             <input
-                                autocomplete="off"
+                                autoComplete="off"
                                 type="password"
                                 name="password"
-                                class={valueInput.isValidEmail ? 'form-control' : 'is-invalid form-control'}
+                                className={valueInput.isValidEmail ? 'form-control' : 'is-invalid form-control'}
                                 id="password"
                                 value={password}
                                 onChange={(event) => { setPassword(event.target.value) }}

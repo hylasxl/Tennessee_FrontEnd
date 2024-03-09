@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 const EducationalAffairCreateCourse = () => {
 
-    const {user} = useContext(UserContext)
+    const { user } = useContext(UserContext)
     const navigate = useNavigate()
 
     const [languages, setLanguages] = useState(null)
@@ -23,6 +23,7 @@ const EducationalAffairCreateCourse = () => {
     const [numberofLesson, setNumberofLesson] = useState('')
     const [price, setPrice] = useState('')
     const [description, setDescription] = useState('')
+    const [image, setImage] = useState('')
     const [isNumberEmpty, setIsNumberEmpty] = useState(true)
     const [isLessonLoaded, setIsLessonLoaded] = useState(false)
 
@@ -143,6 +144,9 @@ const EducationalAffairCreateCourse = () => {
             })
             if (!validLesson) return
         }
+        if(!image || image === ''){
+            setImage("DEFAULT IMAGE")
+        }
 
         // console.log(name,
         //    language, 
@@ -160,13 +164,14 @@ const EducationalAffairCreateCourse = () => {
             price,
             description,
             JSON.stringify(lesson),
-            user.user.userId
+            user.user.userId,
+            image
         )
 
-        if(data && +data.EC === 1){
+        if (data && +data.EC === 1) {
             toast.success("Created course successfully")
-            navigate('/educational-affair/course')
-        } else if (data && +data.EC !== 1){
+            // navigate('/educational-affair/course')
+        } else if (data && +data.EC !== 1) {
             toast.error("There is an error while creating course")
         }
     }
@@ -311,7 +316,7 @@ const EducationalAffairCreateCourse = () => {
                                 placeholder="Image"
                                 aria-label="Username"
                                 aria-describedby="basic-addon1"
-
+                                onChange={(e)=>setImage(e.target.files[0])}
                             />
                         </div>
 

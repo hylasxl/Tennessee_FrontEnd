@@ -10,27 +10,21 @@ const ClassTable = (props) => {
     const [allClass, setAllClass] = useState([])
     const [isLoad, setIsLoad] = useState(false)
 
-    const shiftProcessingFn = (shift) => {
-        if(+shift === 1) return "07:00:00 - 11:00:00"
-        if(+shift === 2) return "13:00:00 - 17:00:00"
-        if(+shift === 3) return "19:00:00 - 22:00:00"
-    }
-
     const handleGetAllClass = async () => {
         return await getAllClass()
     }
-
-
+    
     useEffect(() => {
         if (!isLoad) {
             handleGetAllClass().then((res) => {
-                setAllClass(res.DT)
-                setIsLoad(true)
-
+                const waitTime = Math.floor(Math.random() * (2000 - 250) + 250)
+                setTimeout(() => {
+                    setAllClass(res.DT)
+                    setIsLoad(true)
+                },waitTime)
             })
         }
     }, [isLoad])
-
 
 
     const columns = useMemo(
@@ -92,10 +86,12 @@ const ClassTable = (props) => {
     const table = useMaterialReactTable({
         columns,
         data: allClass,
-        enableColumnOrdering: true,
-        enableColumnPinning: true,
         enableStickyHeader: true,
         enableRowActions: true,
+        state: {
+            isLoad,
+            showProgressBars: !isLoad
+        },
         initialState: {
             columnPinning: { left: ['mrt-row-actions', 'id'] }
         },
