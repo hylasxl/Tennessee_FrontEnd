@@ -5,7 +5,7 @@ import StudentAccountListTable from '../../components/Tables/studentAccountListT
 const EducationalAffairStudentWaitingList = (props) => {
     return (<>
         <div className="page-container">
-            <EducationalAffairNavigation />
+            <EducationalAffairNavigation subStudentNavigation="Waiting List" />
             <div className="page-content">
                 <h3 style={{margin:'-20px 0 20px 0',fontWeight:'bold'}}>Waiting List</h3>
                 <StudentAccountListTable />

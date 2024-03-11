@@ -61,19 +61,14 @@ const ClassTable = (props) => {
                 size: 20
             },
             {
-                accessorKey: 'maxQuantity',
+                accessorFn: (row)=>`${row.currentQuantity}/${row.maxQuantity}`,
                 header: 'Quantity',
-                size: 10
+                size: 5
             },
             {
-                accessorKey: 'currentQuantity',
-                header: 'Current Quantity',
-                size: 10
-            },
-            {
-                accessorKey: 'classShift',
+                accessorFn: (row)=>`${row.class_classShift.startTime} - ${row.class_classShift.endTime}`,
                 header: 'Shift',
-                size: 10
+                size: 20
             },
             {
                 accessorKey: 'description',

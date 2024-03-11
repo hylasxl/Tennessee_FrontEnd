@@ -10,8 +10,10 @@ import { UserContext } from "../../context/UserContext";
 import { toast } from 'react-toastify'
 import { checkEmailFormat, checkAfterToday, isVietnamesePhoneNumber } from "../../utils/utils.function";
 import dayjs from "dayjs";
-import { sendNewStudentAccountRequest, sendNewLecturerAccountRequest } from "../../service/accountService";
+import { sendNewLecturerAccountRequest } from "../../service/lecturerAccountListService";
+import { sendNewStudentAccountRequest } from "../../service/studentAccountListService";
 import { useNavigate } from "react-router-dom";
+import { ScheduleSend } from "@mui/icons-material";
 const AddNewAccountRequest = (props) => {
 
     // const [startDate, setStartDate] = useState(new Date())
@@ -167,10 +169,10 @@ const AddNewAccountRequest = (props) => {
 
                     />
                     {role === "student" && (
-                        <Button className="studentSend" variant="contained" color="success" onClick={handleSendRequestButton}>Send Request</Button>
+                        <Button startIcon={<ScheduleSend/>} className="studentSend" variant="contained" color="success" onClick={handleSendRequestButton}>Send Request</Button>
                     )}
                     {role === "teacher" && (
-                        <Button className="teacherSend" variant="contained" color="success" onClick={handleSendRequestButton}>Send Request</Button>
+                        <Button startIcon={<ScheduleSend/>} className="teacherSend" variant="contained" color="success" onClick={handleSendRequestButton}>Send Request</Button>
                     )}
                 </Stack>
                 <Stack style={{ width: '50%' }} rowGap={4} className="teacher-info">

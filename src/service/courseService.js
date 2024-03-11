@@ -67,6 +67,12 @@ const sendRequestCreateCourse = async (
     })
 }
 
+const fetchCourseByLanguage = async (languageId)=>{
+    return await axios.post('/api/course/fetch-course-by-language',{
+        languageId
+    })
+}
+
 const courseRequestApproval = async (id, status,approveId) => {
     return await axios.post('/api/course/course-approval', {
         id,
@@ -78,5 +84,6 @@ const courseRequestApproval = async (id, status,approveId) => {
 export {
     fetchAllCourse,
     sendRequestCreateCourse,
-    courseRequestApproval
+    courseRequestApproval,
+    fetchCourseByLanguage
 }

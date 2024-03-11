@@ -179,7 +179,7 @@ const EducationalAffairCreateCourse = () => {
     return (
         <>
             <div className="create-new-course-container w-100" style={{ marginBottom: '30px' }}>
-                <EducationalAffairNavigation />
+                <EducationalAffairNavigation subCourseNavigation="Create New Course" />
                 <div className="input-field-container mt-5 ps-5 pe-4 w-100 d-flex flex-row gap-4">
                     <div className="course-information w-50">
                         <div className="table-header">

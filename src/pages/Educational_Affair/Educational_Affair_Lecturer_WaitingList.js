@@ -4,7 +4,7 @@ import LecturerAccountListTable from '../../components/Tables/lecturerAccountLis
 const EducationalAffairLecturerWaitingList = (props) => {
     return (<>
         <div className="page-container">
-            <EducationalAffairNavigation />
+            <EducationalAffairNavigation subLecturerNavigation="Waiting List"/>
             <div className="page-content">
                 <h3 style={{margin:'-20px 0 20px 0',fontWeight:'bold'}}>Waiting List</h3>
                 <LecturerAccountListTable />

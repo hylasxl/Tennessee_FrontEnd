@@ -4,7 +4,7 @@ import {
     MaterialReactTable,
     useMaterialReactTable,
 } from 'material-react-table';
-import { fetchAllList } from '../../service/lecturerAccountList';
+import { fetchAllList } from '../../service/lecturerAccountListService';
 
 const LecturerAccountListTable = (props) => {
     const [lecturerList, setLecturerList] = useState([])
