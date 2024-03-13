@@ -3,34 +3,6 @@ import axios from '../setup/axios'
 const fetchAllCourse = async () => {
     return await axios.get('/api/course/fetch-all-courses')
 }
-
-// const sendRequestCreateCourse = async (
-//     courseName,
-//     language,
-//     duration,
-//     durationofLesson,
-//     numberofLesson,
-//     price,
-//     description,
-//     lesson,
-//     userId,
-//     image
-// ) => {
-
-
-//     return await axios.post('/api/course/create-course', {
-//         courseName,
-//         language,
-//         duration,
-//         durationofLesson,
-//         numberofLesson,
-//         price,
-//         description,
-//         lesson,
-//         userId,
-//     })
-
-// }
 const sendRequestCreateCourse = async (
     courseName,
     language,
@@ -81,9 +53,14 @@ const courseRequestApproval = async (id, status,approveId) => {
     })
 }
 
+const countCourseRequest = async ()=>{
+    return await axios.get('/api/course/fetch-course-request')
+}
+
 export {
     fetchAllCourse,
     sendRequestCreateCourse,
     courseRequestApproval,
-    fetchCourseByLanguage
+    fetchCourseByLanguage,
+    countCourseRequest
 }

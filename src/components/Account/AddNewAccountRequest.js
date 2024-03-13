@@ -92,7 +92,7 @@ const AddNewAccountRequest = (props) => {
         if(role==="student"){
             const response = await sendNewStudentAccountRequest(firstName, lastName, email, gender, dateofBirth, phone, address, currentUserId)
             if(response  && +(await response).EC === 2){
-                toast.error("Email or Phone is already in use") 
+                toast.error(response.EM) 
                 return
             }
             if(response  && +(await response).EC === 1){

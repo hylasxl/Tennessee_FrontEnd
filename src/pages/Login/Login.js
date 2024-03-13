@@ -99,6 +99,7 @@ const LoginPage = (props) => {
                                 className={valueInput.isValidEmail ? 'form-control' : 'is-invalid form-control'}
                                 id="accountID"
                                 value={username}
+                                autoFocus
                                 onChange={(event) => { setUsername(event.target.value) }}
                                 
                             ></input>

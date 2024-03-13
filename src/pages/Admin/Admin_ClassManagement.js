@@ -1,6 +1,14 @@
-const AdminClassManagement = ()=>{
+import AdminNavigation from "../../components/Navigation/Admin_Navigation/Admin_Navigation";
+import ClassTable from "../../components/Tables/classTable";
+const AdminClassManagement = () => {
     return (<>
-        <h1>Class Management</h1>
+        <div className="page-container">
+            <AdminNavigation />
+            <div className="page-content">
+                    <ClassTable controllType='Admin'/>
+                
+            </div>
+        </div>
     </>)
 }
 

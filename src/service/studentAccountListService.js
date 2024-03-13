@@ -8,11 +8,23 @@ const sendNewStudentAccountRequest = async (
     })
 }
 
-const fetchAllList = async ()=>{
+const fetchAllList = async () => {
     return await axios.get('/api/student-list/fetch-all')
+}
+
+const countStudentRequest = async () => {
+    return await axios.get('/api/student-list/count-request')
+}
+
+const studentApprove = async (currentId, studentId, approveType) => {
+    return await axios.post('/api/student-list/student-approve', {
+        currentId, studentId, approveType
+    })
 }
 
 export {
     fetchAllList,
-    sendNewStudentAccountRequest
+    sendNewStudentAccountRequest,
+    countStudentRequest,
+    studentApprove
 }

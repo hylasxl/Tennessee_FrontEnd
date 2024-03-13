@@ -24,10 +24,10 @@ instance.interceptors.response.use(function (response) {
         case 401: {
 
             toast.error("Unauthorized User")
-            toast.error("You will be redirect to login page")
-            setTimeout(() => {
-                window.location.href = '/login'
-            }, 2000)
+            // toast.error("You will be redirect to login page")
+            // setTimeout(() => {
+            //     window.location.href = '/login'
+            // }, 2000)
             return status.EM
         }
 

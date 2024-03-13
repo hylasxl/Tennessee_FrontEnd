@@ -4,3 +4,12 @@
 .customDatePickerWidth > div > div.react-datepicker__input-container input {
   width: 100%;
 }
+
+.transition {
+  transition: opacity 0.2s ease-in-out;
+  opacity: 0;
+}
+
+.transition.appear {
+  opacity: 1;
+}

@@ -12,7 +12,7 @@ const EducationalAffairNavigation = (props) => {
     const subStudentNavigation = props.subStudentNavigation || "MAIN_PAGE"
 
     const CourseManagementChildrens = ['/educational-affair/course', '/educational-affair/course/create-new-course']
-    const ClassManagementChildrens = ['/educational-affair/class', '/educational-affair/class/create-new-class']
+    const ClassManagementChildrens = ['/educational-affair/class', '/educational-affair/class/create-new-class','/educational-affair/class/waiting-list','/educational-affair/class/add-student']
     const LecturerManagementChildrens = ['/educational-affair/lecturer', '/educational-affair/lecturer/add-new-lecturer', '/educational-affair/lecturer/waiting-list']
     const StudentManagementChildrens = ['/educational-affair/student', '/educational-affair/student/add-new-student', '/educational-affair/student/waiting-list']
     const RoomManagementChildrens = ['/educational-affair/room']

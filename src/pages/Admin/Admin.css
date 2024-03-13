@@ -1,0 +1,15 @@
+.page-container {
+  position: relative;
+  height: 100vh;
+}
+.page-container .button-section {
+  margin: 20px 0;
+  position: absolute;
+  top: 60px;
+  right: 50px;
+  background-color: #1a2d59;
+}
+.page-container .page-content {
+  margin-top: 40px;
+  padding: 0 20px;
+} /*# sourceMappingURL=Admin.css.map */

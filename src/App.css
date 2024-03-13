@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap");
+body {
+  font-family: "Roboto Slab" !important;
+  font-optical-sizing: auto !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+}
+
+body > iframe {
+  display: none;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}/*# sourceMappingURL=App.css.map */

@@ -10,6 +10,9 @@ import AdminAccountManagementUserInfo from "../pages/Admin/Admin_AccountManageme
 import AdminCourseManagement from "../pages/Admin/Admin_CourseManagement"
 import AdminClassManagement from "../pages/Admin/Admin_ClassManagement";
 import AdminCourseDetail from "../pages/Admin/Admin_CourseDetail";
+import AdminLecturerRequest from "../pages/Admin/Admin_LecturerRequest";
+import AdminStudentRequest from "../pages/Admin/Admin_StudentRequest";
+
 
 import EducationalAffairCourseManagement from "../pages/Educational_Affair/Educational_Affair_Course_Management";
 import EducationalAffairCreateCourse from "../pages/Educational_Affair/Educational_Affair_Create_Course";
@@ -22,6 +25,11 @@ import EducationalAffairLecturerAddNew from "../pages/Educational_Affair/Educati
 import EducationalAffairStudentWaitingList from "../pages/Educational_Affair/Educational_Affair_Student_WaitingList";
 import EducationalAffairLecturerWaitingList from "../pages/Educational_Affair/Educational_Affair_Lecturer_WaitingList";
 import EducationalAffairClassAddNeww from "../pages/Educational_Affair/Educational_Affair_Class_AddNew";
+import EducationalAffairClassWaitingList from "../pages/Educational_Affair/Educational_Affair_Class_WaitingList";
+import EducationalAffairClassAddStudent from "../pages/Educational_Affair/Educational_Affair_Class_AddStudent";
+
+
+import StudentClass from "../pages/Student/Student_Class";
 
 const AppRoutes = () => {
   return (
@@ -41,6 +49,8 @@ const AppRoutes = () => {
         <Route path='/admin/course' element={<AdminCourseManagement />} />
         <Route path='admin/course/detail/:data' element={<AdminCourseDetail />} />
         <Route path='/admin/class' element={<AdminClassManagement />} />
+        <Route path="/admin/lecturer-request" element={<AdminLecturerRequest/>}/>
+        <Route path="/admin/student-request" element={<AdminStudentRequest/>}/>
 
 
         <Route path='/educational-affair/course' element={<EducationalAffairCourseManagement />} />
@@ -54,6 +64,10 @@ const AppRoutes = () => {
         <Route path="/educational-affair/lecturer/add-new-lecturer" element={<EducationalAffairLecturerAddNew />} />
         <Route path="/educational-affair/lecturer/waiting-list" element={<EducationalAffairLecturerWaitingList />} />
         <Route path="/educational-affair/class/create-new-class" element={<EducationalAffairClassAddNeww />} />
+        <Route path="/educational-affair/class/waiting-list" element={<EducationalAffairClassWaitingList />} />
+        <Route path="/educational-affair/class/add-student" element={<EducationalAffairClassAddStudent />} />
+
+        <Route path="/student/class" element={<StudentClass/>}/>
 
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -2,14 +2,14 @@ import EducationalAffairNavigation from "../../components/Navigation/Educational
 import AddNewClass from "../../components/Class/Class_AddNew"
 import './Education_Affair.scss'
 
-const EducationalAffairClassAddNeww = (props)=>{
+const EducationalAffairClassAddNeww = (props) => {
     return (<>
-    <div className="page-container">
+        <div className="page-container">
             <EducationalAffairNavigation subClassNavigation="Add New Class" />
             <div className="page-content">
                 <div className="main-content" style={{ marginLeft: '40px' }}>
                     <h2 style={{ fontWeight: 'bold', width: '100%' }}>Class Information</h2>
-                    <AddNewClass/>
+                    <AddNewClass />
                 </div>
             </div>
         </div>

@@ -1,0 +1,12 @@
+.course-basic-info {
+  margin-top: 30px;
+  font-size: 18px;
+}
+.course-basic-info .fieldName {
+  font-weight: bold;
+  min-width: 200px;
+}
+.course-basic-info .fieldNameoflesson {
+  font-weight: bold;
+  min-width: 150px;
+}/*# sourceMappingURL=CourseDetail.css.map */

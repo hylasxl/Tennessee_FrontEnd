@@ -1,0 +1,28 @@
+@charset "UTF-8";
+.tag-container {
+  height: 535px !important;
+  background-color: #fafafa;
+}
+.tag-container img {
+  width: 100%;
+  height: auto;
+  -o-object-fit: fill !important;
+     object-fit: fill !important;
+}
+.tag-container .button-learn-more {
+  width: 200px;
+  height: 40px;
+  border: none;
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #d31245;
+}
+.tag-container .top-line {
+  color: #1a2d59;
+}
+.tag-container .top-line::before {
+  content: "—";
+  display: block;
+  font-weight: 400;
+  font-size: 24px;
+}/*# sourceMappingURL=Tags.css.map */

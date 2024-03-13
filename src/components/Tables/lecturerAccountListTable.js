@@ -1,18 +1,34 @@
 
-import { useState, useMemo, useEffect, useCallback, useContext, useRef } from 'react';
+import { useState, useMemo, useEffect, useContext } from 'react';
 import {
     MaterialReactTable,
     useMaterialReactTable,
 } from 'material-react-table';
 import { fetchAllList } from '../../service/lecturerAccountListService';
+import { MenuItem, ListItemIcon } from "@mui/material";
+import { DoneAll, Close } from "@mui/icons-material";
+import { UserContext } from "../../context/UserContext";
+import { lecturerApprove } from '../../service/lecturerAccountListService';
+import { toast } from "react-toastify";
 
 const LecturerAccountListTable = (props) => {
+    const controllType = props.controllType;
+
+    const { user } = useContext(UserContext);
+    const currentUserId = user.user.userId;
+
+
     const [lecturerList, setLecturerList] = useState([])
     const [isLoad, setIsLoad] = useState(false)
 
     const handleFetchAllLecturer = async () => {
         return await fetchAllList()
     }
+
+    
+    const handleLecturerApporve = async (currentId, lecturerId, approveType) => {
+        return await lecturerApprove(currentId, lecturerId, approveType);
+    };
 
     const statusFilter = ['Pending','Approved','Rejected']
 
@@ -110,6 +126,70 @@ const LecturerAccountListTable = (props) => {
         },
         isMultiSortEvent: () => true,
         renderRowActionMenuItems: ({ closeMenu, row }) => [
+            <MenuItem
+            key={0}
+            onClick={() => {
+                const approveType = "Approve";
+                const sendRequest = async () => {
+                    return new Promise((resolve, reject) => {
+                        handleLecturerApporve(currentUserId, row.getValue("id"), approveType)
+                            .then((res) => {
+                                if (res && res.EC === 1) {
+                                    resolve()
+                                } else {
+                                    reject()
+                                }
+                            });
+                    })
+                }
+                const promise = sendRequest()
+                toast.promise(promise, {
+                    pending: 'Sending Request',
+                    success: 'Approve Successfully',
+                    error: 'Error when fetching',
+                })
+
+                closeMenu();
+            }}
+            sx={{ display: controllType === "Admin" && row.getValue('approveStatus') === "Pending" ? "block" : "none" }}
+        >
+            <ListItemIcon>
+                <DoneAll />
+                Approve
+            </ListItemIcon>
+        </MenuItem>,
+        <MenuItem
+            key={1}
+            onClick={() => {
+                const approveType = "Reject";
+                const sendRequest = async () => {
+                    return new Promise((resolve, reject) => {
+                        handleLecturerApporve(currentUserId, row.getValue("id"), approveType)
+                            .then((res) => {
+                                if (res && res.EC === 1) {
+                                    resolve()
+                                } else {
+                                    reject()
+                                }
+                            });
+                    })
+                }
+                const promise = sendRequest()
+                toast.promise(promise, {
+                    pending: 'Sending Request',
+                    success: 'Reject Successfully',
+                    error: 'Error when fetching',
+                })
+
+                closeMenu();
+            }}
+            sx={{ display: controllType === "Admin" && row.getValue('approveStatus') === "Pending" ? "block" : "none" }}
+        >
+            <ListItemIcon>
+                <Close />
+                Reject
+            </ListItemIcon>
+        </MenuItem>,
         ]
     })
 

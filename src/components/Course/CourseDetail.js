@@ -95,6 +95,11 @@ const CourseDetail = (props) => {
                         }
                     </div>
                     <div className="col col-6 lesson-info">
+                        {
+                            courseData.course_image !== "" && (
+                                <img style={{width:'90%',height:'auto'}} alt="Default" src={courseData.course_image.imagePath}/>
+                            )
+                        }
                         {courseData.lessons.map((item, index) => {
                             return (
                                 <div className="course-basic-info d-flex flex-row" key={index}>

@@ -22,9 +22,38 @@ const isVietnamesePhoneNumber = (number) => {
     return /(03|05|07|08|09|01[2|6|8|9])+([0-9]{8})\b/.test(number);
 }
 
+function addDays(startDate, daysAsObject) {
+    const date = new Date(startDate);
+    const daysToAdd = daysAsObject.map((day, index) => day === 1 ? index + 1 : 0).filter(day => day !== 0);
+
+    const newDates = daysToAdd.map(day => {
+        const newDate = new Date(date);
+        newDate.setDate(newDate.getDate() + day);
+        return newDate;
+    });
+
+    return newDates;
+}
+
+function convertDays(days) {
+    var weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    var dayArray = days.split(',');
+    var result = '';
+
+    for (var i = 0; i < dayArray.length; i++) {
+        if (dayArray[i] === '1') {
+            result += weekdays[i] + ', ';
+        }
+    }
+
+    return result.slice(0, -2);  // remove the trailing comma and space
+}
+
 export {
     checkEmailFormat,
     checkAfterToday,
     dateDiffInDays,
-    isVietnamesePhoneNumber
+    isVietnamesePhoneNumber,
+    addDays,
+    convertDays
 }
