@@ -28,8 +28,9 @@ import EducationalAffairClassAddNeww from "../pages/Educational_Affair/Education
 import EducationalAffairClassWaitingList from "../pages/Educational_Affair/Educational_Affair_Class_WaitingList";
 import EducationalAffairClassAddStudent from "../pages/Educational_Affair/Educational_Affair_Class_AddStudent";
 
-
 import StudentClass from "../pages/Student/Student_Class";
+
+import LecturerClass from "../pages/Lecturer/Lecturer_Class";
 
 const AppRoutes = () => {
   return (
@@ -68,6 +69,8 @@ const AppRoutes = () => {
         <Route path="/educational-affair/class/add-student" element={<EducationalAffairClassAddStudent />} />
 
         <Route path="/student/class" element={<StudentClass/>}/>
+
+        <Route path="/lecturer/class" element={<LecturerClass/>}/>
 
         <Route path="*" element={<NotFound />} />
       </Routes>

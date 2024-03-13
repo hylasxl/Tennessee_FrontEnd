@@ -28,6 +28,11 @@ const fetchClassByStudent = async (studentId)=>{
         studentId
     })
 }
+const fetchClassByLecturer = async (lecturerId)=>{
+    return await axios.post('/api/class/fetch-class-lecturer',{
+        lecturerId
+    })
+}
 
 
 export {
@@ -35,5 +40,6 @@ export {
     sendNewClassRequest,
     countClassRequest,
     classApprove,
-    fetchClassByStudent
+    fetchClassByStudent,
+    fetchClassByLecturer
 }

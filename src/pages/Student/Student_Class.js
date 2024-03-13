@@ -1,6 +1,6 @@
 import './Student.scss'
-import StudentNavigation from '../../components/Navigation/Student_Navigation/Student_Navigation'
 import ClassStudentTable from '../../components/Tables/classStudentTable'
+import StudentNavigation from '../../components/Navigation/Student_Navigation/Student_Navigation'
 const StudentClass = () => {
     return (<>
         <div className="page-container">

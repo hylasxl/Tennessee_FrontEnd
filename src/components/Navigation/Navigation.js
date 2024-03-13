@@ -59,6 +59,10 @@ const Navigation = () => {
         navigate('/student/class')
     }
 
+    const handleLeturerClick = ()=>{
+        navigate('/lecturer/class')
+    }
+
     return (
         <Navbar expand="lg" className="bg-1a2d59 w-100 container-fluid">
             <Container>
@@ -87,6 +91,11 @@ const Navigation = () => {
                                 {accountType === 2 &&
                                     (<div>
                                         <span style={{ cursor: 'pointer' }} onClick={() => handleEducationalAffairClick()}>Educational Affair Management</span>
+                                    </div>)
+                                }
+                                {accountType === 3 &&
+                                    (<div>
+                                        <span style={{ cursor: 'pointer' }} onClick={() => handleLeturerClick()}>Lecturer Management</span>
                                     </div>)
                                 }
                                 {
