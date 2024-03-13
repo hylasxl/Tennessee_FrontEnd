@@ -16,7 +16,7 @@ const ClassTable = (props) => {
     const [allClass, setAllClass] = useState([])
     const [isLoad, setIsLoad] = useState(false)
 
-    const controllType = props.controllType;
+    const controlType = props.controlType;
 
     const { user } = useContext(UserContext);
     const currentUserId = user.user.userId;
@@ -197,7 +197,7 @@ const ClassTable = (props) => {
 
                     closeMenu();
                 }}
-                sx={{ display: controllType === "Admin" && row.getValue('approveStatus') === "Pending" ? "block" : "none" }}
+                sx={{ display: controlType === "Admin" && row.getValue('approveStatus') === "Pending" ? "block" : "none" }}
             >
                 <ListItemIcon>
                     <DoneAll />
@@ -229,7 +229,7 @@ const ClassTable = (props) => {
 
                     closeMenu();
                 }}
-                sx={{ display: controllType === "Admin" && row.getValue('approveStatus') === "Pending" ? "block" : "none" }}
+                sx={{ display: controlType === "Admin" && row.getValue('approveStatus') === "Pending" ? "block" : "none" }}
             >
                 <ListItemIcon>
                     <Close />

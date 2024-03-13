@@ -12,7 +12,7 @@ import { lecturerApprove } from '../../service/lecturerAccountListService';
 import { toast } from "react-toastify";
 
 const LecturerAccountListTable = (props) => {
-    const controllType = props.controllType;
+    const controlType = props.controlType;
 
     const { user } = useContext(UserContext);
     const currentUserId = user.user.userId;
@@ -151,7 +151,7 @@ const LecturerAccountListTable = (props) => {
 
                 closeMenu();
             }}
-            sx={{ display: controllType === "Admin" && row.getValue('approveStatus') === "Pending" ? "block" : "none" }}
+            sx={{ display: controlType === "Admin" && row.getValue('approveStatus') === "Pending" ? "block" : "none" }}
         >
             <ListItemIcon>
                 <DoneAll />
@@ -183,7 +183,7 @@ const LecturerAccountListTable = (props) => {
 
                 closeMenu();
             }}
-            sx={{ display: controllType === "Admin" && row.getValue('approveStatus') === "Pending" ? "block" : "none" }}
+            sx={{ display: controlType === "Admin" && row.getValue('approveStatus') === "Pending" ? "block" : "none" }}
         >
             <ListItemIcon>
                 <Close />

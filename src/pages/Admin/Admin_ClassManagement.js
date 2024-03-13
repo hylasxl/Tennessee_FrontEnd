@@ -5,7 +5,7 @@ const AdminClassManagement = () => {
         <div className="page-container">
             <AdminNavigation />
             <div className="page-content">
-                    <ClassTable controllType='Admin'/>
+                    <ClassTable controlType='Admin'/>
                 
             </div>
         </div>

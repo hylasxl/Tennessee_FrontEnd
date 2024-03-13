@@ -31,6 +31,7 @@ import EducationalAffairClassAddStudent from "../pages/Educational_Affair/Educat
 import StudentClass from "../pages/Student/Student_Class";
 
 import LecturerClass from "../pages/Lecturer/Lecturer_Class";
+import LecturerTimetable from "../pages/Lecturer/Lecturer_Timetable";
 
 const AppRoutes = () => {
   return (
@@ -71,6 +72,7 @@ const AppRoutes = () => {
         <Route path="/student/class" element={<StudentClass/>}/>
 
         <Route path="/lecturer/class" element={<LecturerClass/>}/>
+        <Route path="/lecturer/timetable" element={<LecturerTimetable />}/>
 
         <Route path="*" element={<NotFound />} />
       </Routes>

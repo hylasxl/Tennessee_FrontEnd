@@ -13,7 +13,7 @@ const LecturerNavigation = (props) => {
                     <Navbar.Brand href="/">Home</Navbar.Brand>
                     <Nav className="me-auto">
                         <Nav.Link href="/lecturer/class" className={classChildrens.includes(window.location.pathname) ? 'active' : ''}>Class</Nav.Link>
-                        <Nav.Link href="/lecturer/timetable" className={timeTableChildrens.includes(window.location.pathname) ? 'active' : ''}>Time Table</Nav.Link>
+                        <Nav.Link href="/lecturer/timetable" className={timeTableChildrens.includes(window.location.pathname) ? 'active' : ''}>TimeTable</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>

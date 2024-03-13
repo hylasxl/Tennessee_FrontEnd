@@ -6,7 +6,7 @@ const AdminStudentRequest = () => {
         <div className="page-container">
             <AdminNavigation />
             <div className="page-content">
-                <StudentAccountListTable controllType="Admin" />
+                <StudentAccountListTable controlType="Admin" />
             </div>
         </div>
     </>)

@@ -1,7 +1,7 @@
 import './Lecturer.scss'
 import LecturerNavigation from '../../components/Navigation/Lecturer_Navigation/Lecturer_Navigation'
 import TimeTable from '../../components/Timetable/TimeTable'
-const LecturerClass = () => {
+const LecturerTimetable = () => {
     return (<>
         <div className="page-container">
             <LecturerNavigation />
@@ -12,4 +12,4 @@ const LecturerClass = () => {
     </>)
 }
 
-export default LecturerClass
+export default LecturerTimetable

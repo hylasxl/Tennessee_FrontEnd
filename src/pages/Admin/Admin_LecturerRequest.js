@@ -6,7 +6,7 @@ const AdminLecturerRequest = () => {
         <div className="page-container">
             <AdminNavigation />
             <div className="page-content">
-                <LecturerAccountListTable controllType='Admin' />
+                <LecturerAccountListTable controlType='Admin' />
             </div>
         </div>
     </>)
