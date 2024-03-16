@@ -29,9 +29,12 @@ import EducationalAffairClassWaitingList from "../pages/Educational_Affair/Educa
 import EducationalAffairClassAddStudent from "../pages/Educational_Affair/Educational_Affair_Class_AddStudent";
 
 import StudentClass from "../pages/Student/Student_Class";
+import StudentTimetable from "../pages/Student/Student_Timetable"
 
 import LecturerClass from "../pages/Lecturer/Lecturer_Class";
 import LecturerTimetable from "../pages/Lecturer/Lecturer_Timetable";
+import LecturerAcademicTranscript from "../pages/Lecturer/Lecturer_AcademicTranscipt";
+import LecturerCheckAttendance from "../pages/Lecturer/Lecturer_CheckAttendance";
 
 const AppRoutes = () => {
   return (
@@ -70,9 +73,12 @@ const AppRoutes = () => {
         <Route path="/educational-affair/class/add-student" element={<EducationalAffairClassAddStudent />} />
 
         <Route path="/student/class" element={<StudentClass/>}/>
+        <Route path="/student/timetable" element={<StudentTimetable/>}/>
 
         <Route path="/lecturer/class" element={<LecturerClass/>}/>
         <Route path="/lecturer/timetable" element={<LecturerTimetable />}/>
+        <Route path="/lecturer/academic-transcript" element={<LecturerAcademicTranscript />}/>
+        <Route path="/lecturer/check-attendance" element={<LecturerCheckAttendance />}/>
 
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -22,12 +22,11 @@ instance.interceptors.response.use(function (response) {
     switch (status.EC) {
         // authentication (token related issues)
         case 401: {
-
+            let insecuredPath = ['/','/login','/course']
+            if(insecuredPath.includes(window.location.pathname)){
+                return status.EM
+            }
             toast.error("Unauthorized User")
-            // toast.error("You will be redirect to login page")
-            // setTimeout(() => {
-            //     window.location.href = '/login'
-            // }, 2000)
             return status.EM
         }
 

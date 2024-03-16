@@ -48,6 +48,13 @@ function convertDays(days) {
 
     return result.slice(0, -2);  // remove the trailing comma and space
 }
+function convertToTwoDigitFormat(num) {
+    if (num < 10 && num >= 0) {
+        return '0' + num;
+    } else {
+        return '' + num;
+    }
+}
 
 export {
     checkEmailFormat,
@@ -55,5 +62,6 @@ export {
     dateDiffInDays,
     isVietnamesePhoneNumber,
     addDays,
-    convertDays
+    convertDays,
+    convertToTwoDigitFormat
 }
