@@ -5,7 +5,6 @@ const checkEmailFormat = (email) => {
 
 const dateDiffInDays = (a, b) => {
     const _MS_PER_DAY = 1000 * 60 * 60 * 24;
-    // Discard the time and time-zone information.
     const utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
     const utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
 
@@ -39,14 +38,12 @@ function convertDays(days) {
     var weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
     var dayArray = days.split(',');
     var result = '';
-
     for (var i = 0; i < dayArray.length; i++) {
         if (dayArray[i] === '1') {
             result += weekdays[i] + ', ';
         }
     }
-
-    return result.slice(0, -2);  // remove the trailing comma and space
+    return result.slice(0, -2);
 }
 function convertToTwoDigitFormat(num) {
     if (num < 10 && num >= 0) {
@@ -54,6 +51,19 @@ function convertToTwoDigitFormat(num) {
     } else {
         return '' + num;
     }
+}
+function areArraysEqual(arr1, arr2) {
+    if (arr1.length !== arr2.length || arr1[0].length !== arr2[0].length) {
+        return false;
+    }
+    for (let i = 0; i < arr1.length; i++) {
+        for (let j = 0; j < arr1[0].length; j++) {
+            if (arr1[i][j] !== arr2[i][j]) {
+                return false;
+            }
+        }
+    }
+    return true;
 }
 
 export {
@@ -63,5 +73,6 @@ export {
     isVietnamesePhoneNumber,
     addDays,
     convertDays,
-    convertToTwoDigitFormat
+    convertToTwoDigitFormat,
+    areArraysEqual
 }

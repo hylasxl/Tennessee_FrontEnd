@@ -30,6 +30,7 @@ import EducationalAffairClassAddStudent from "../pages/Educational_Affair/Educat
 
 import StudentClass from "../pages/Student/Student_Class";
 import StudentTimetable from "../pages/Student/Student_Timetable"
+import StudentAbsentRequest from "../pages/Student/Student_AbsentRequest";
 
 import LecturerClass from "../pages/Lecturer/Lecturer_Class";
 import LecturerTimetable from "../pages/Lecturer/Lecturer_Timetable";
@@ -74,6 +75,7 @@ const AppRoutes = () => {
 
         <Route path="/student/class" element={<StudentClass/>}/>
         <Route path="/student/timetable" element={<StudentTimetable/>}/>
+        <Route path="/student/absent-request" element={<StudentAbsentRequest/>}/>
 
         <Route path="/lecturer/class" element={<LecturerClass/>}/>
         <Route path="/lecturer/timetable" element={<LecturerTimetable />}/>
