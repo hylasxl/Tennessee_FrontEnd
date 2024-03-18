@@ -27,6 +27,7 @@ import EducationalAffairLecturerWaitingList from "../pages/Educational_Affair/Ed
 import EducationalAffairClassAddNeww from "../pages/Educational_Affair/Educational_Affair_Class_AddNew";
 import EducationalAffairClassWaitingList from "../pages/Educational_Affair/Educational_Affair_Class_WaitingList";
 import EducationalAffairClassAddStudent from "../pages/Educational_Affair/Educational_Affair_Class_AddStudent";
+import EducationalAffairAbsentRequest from "../pages/Educational_Affair/Educational_Affair_AbsentRequest";
 
 import StudentClass from "../pages/Student/Student_Class";
 import StudentTimetable from "../pages/Student/Student_Timetable"
@@ -72,6 +73,7 @@ const AppRoutes = () => {
         <Route path="/educational-affair/class/create-new-class" element={<EducationalAffairClassAddNeww />} />
         <Route path="/educational-affair/class/waiting-list" element={<EducationalAffairClassWaitingList />} />
         <Route path="/educational-affair/class/add-student" element={<EducationalAffairClassAddStudent />} />
+        <Route path="/educational-affair/absent-request" element={<EducationalAffairAbsentRequest />} />
 
         <Route path="/student/class" element={<StudentClass/>}/>
         <Route path="/student/timetable" element={<StudentTimetable/>}/>

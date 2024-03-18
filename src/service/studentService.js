@@ -7,9 +7,15 @@ const fetchStudentByClass = async (classId) => {
     })
 }
 
-const saveStudent = async(classId,studentList)=>{
-    return await axios.post('/api/student/save-student',{
-        classId,studentList
+const saveStudent = async (classId, studentList) => {
+    return await axios.post('/api/student/save-student', {
+        classId, studentList
+    })
+}
+
+const sendAbsentRequest = async (absentData) => {
+    return await axios.post('/api/student/send-absent-request', {
+        absentData
     })
 }
 
@@ -17,5 +23,6 @@ const saveStudent = async(classId,studentList)=>{
 
 export {
     fetchStudentByClass,
-    saveStudent
+    saveStudent,
+    sendAbsentRequest
 }

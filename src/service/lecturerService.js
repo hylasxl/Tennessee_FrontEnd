@@ -31,10 +31,15 @@ const saveAcademicTranscript = async(transcriptData)=>{
     })
 }
 
+const fetchAbsentRequest = async()=>{
+    return await axios.get('/api/lecturer/fetch-absent-request')
+}
+
 export {
     fetchLecturerByLanguage,
     fetchClassAttendance,
     checkAttendance,
     fetchClassAcademicTranscript,
-    saveAcademicTranscript
+    saveAcademicTranscript,
+    fetchAbsentRequest
 }

@@ -65,6 +65,19 @@ function areArraysEqual(arr1, arr2) {
     }
     return true;
 }
+const compareArraysOfObjects = (array1, array2) => {
+    if (array1.length !== array2.length) {
+        return false;
+    }
+    array1.sort((a, b) => JSON.stringify(a) > JSON.stringify(b) ? 1 : -1);
+    array2.sort((a, b) => JSON.stringify(a) > JSON.stringify(b) ? 1 : -1);
+    for (let i = 0; i < array1.length; i++) {
+        if (JSON.stringify(array1[i]) !== JSON.stringify(array2[i])) {
+            return false;
+        }
+    }
+    return true;
+}
 
 export {
     checkEmailFormat,
@@ -74,5 +87,6 @@ export {
     addDays,
     convertDays,
     convertToTwoDigitFormat,
-    areArraysEqual
+    areArraysEqual,
+    compareArraysOfObjects
 }
