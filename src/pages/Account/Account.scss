@@ -1,0 +1,47 @@
+.page-container {
+	position: relative;
+	height: 100vh;
+	.button-section {
+        margin: 20px 0;
+		position: absolute;
+		top: 60px;
+		right: 50px;
+		// z-index: 4000;
+        background-color: #1a2d59;
+	}
+
+	.page-content{
+		margin-top: 40px;
+		padding: 0 20px ;
+	}
+}
+
+
+.login-form{
+    border: #1a2d59 5px solid;
+    
+    input{
+        height: 40px;
+        outline: none;
+        line-height: inherit;
+    }
+    .forget-password{
+        margin-left: 30px !important;
+        margin-bottom: 30px !important;
+        color: black;
+    }
+    .login-btn{
+        width: 95%;
+        margin-top: 30px !important;
+        height: 40px;
+        background-color: #1a2d59;
+        border: none;
+        border-radius: 5px;
+        color: #ffffff;
+        transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .login-btn:hover{
+        background-color: #d31245;
+        scale: 1.05;
+    }
+}

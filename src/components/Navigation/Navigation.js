@@ -26,7 +26,6 @@ const Navigation = () => {
         let type = user && user.userPermissions && user.userPermissions.id ? user.userPermissions.id : (user && user.user && user.user.userPermissions && user.user.userPermissions.id ? user.user.userPermissions.id : null)
         let id = user && user.userId ? user.userId : (user && user.user && user.user.userId ? user.user.userId : null);
         setUserId(id)
-        // let type = null;
         setUsername(username)
         setAccountType(type)
     }, [user])
@@ -74,6 +73,7 @@ const Navigation = () => {
                                 <Nav.Link href="/">Home</Nav.Link>
                                 <Nav.Link href="/course" className=''>Courses</Nav.Link>
                                 <Nav.Link href="/about">About Us</Nav.Link>
+                                <Nav.Link href="/contact">Contacts</Nav.Link>
 
                             </Nav>
                         </Navbar.Collapse>

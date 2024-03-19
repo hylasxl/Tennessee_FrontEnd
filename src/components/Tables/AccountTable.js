@@ -16,6 +16,7 @@ import { UserContext } from '../../context/UserContext';
 const AccountTable = (props) => {
     
     const DEFAULT_ACCOUNT_TYPE_ID = 0
+    const isHighLevel = props.isHighLevel
     const { user } = useContext(UserContext)
     const [allUserData, setAllUserData] = useState([])
     const [isLoad, setIsLoad] = useState(false)
@@ -51,8 +52,13 @@ const AccountTable = (props) => {
                 const waitTime = Math.floor(Math.random() * (2000 - 250) + 250)
                 console.log(waitTime);
                 setTimeout(() => {
-                    setAllUserData(res.DT)
+                    let data = res.DT
+                    if(isHighLevel){
+                        data = data.filter(item => item.accountType.id !== 3 && item.accountType.id !== 4);
+                    }
+                    setAllUserData(data)
                     setIsLoad(true)
+                    
                 }, waitTime)
             })
         }

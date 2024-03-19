@@ -40,6 +40,12 @@ const fetchClassSchedule = async(classId)=>{
     })
 }
 
+const approveAbsentRequest = async(request,type)=>{
+    return await axios.put('/api/class/lecturer/approve-absent-request',{
+        request,type
+    })
+}
+
 
 export {
     getAllClass,
@@ -48,5 +54,6 @@ export {
     classApprove,
     fetchClassByStudent,
     fetchClassByLecturer,
-    fetchClassSchedule
+    fetchClassSchedule,
+    approveAbsentRequest
 }

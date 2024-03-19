@@ -9,7 +9,6 @@ import { useEffect, useState } from 'react';
 
 const EducationalAffairNavigation = (props) => {
 
-    const [absentList, setAbsentList] = useState([])
     const [pendingCount, setPendingCount] = useState(0)
 
     const subClassNavigation = props.subClassNavigation || "MAIN_PAGE"

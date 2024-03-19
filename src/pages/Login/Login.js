@@ -101,7 +101,6 @@ const LoginPage = (props) => {
                                 value={username}
                                 autoFocus
                                 onChange={(event) => { setUsername(event.target.value) }}
-                                
                             ></input>
                             <div id="emailHelp" className="form-text">
                                 We'll never share your private account with anyone else.
@@ -120,7 +119,7 @@ const LoginPage = (props) => {
                                 onKeyDown={(event)=>{handlePressEnter(event)}}
                             ></input>
                         </div>
-                        <Link to="" className="forget-password">Forget Password?</Link>
+                        <Link to="/account/forget-password" className="forget-password">Forget Password?</Link>
                         <div className="login-btn-section w-100 d-flex justify-content-center">
                             <button className="login-btn" onClick={() => handleLogin()}>Sign in</button>
                         </div>

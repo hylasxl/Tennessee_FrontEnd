@@ -46,11 +46,17 @@ const changePassword = async (username, oldPassword, newPassword) => {
     })
 }
 
+
+const setUserEnvironment  =async()=>{
+    return await axios.put('/api/env/update')
+}
+
 export {
     login,
     getUserData,
     getUserAccount,
     logout,
     updateUserData,
-    changePassword
+    changePassword,
+    setUserEnvironment
 }

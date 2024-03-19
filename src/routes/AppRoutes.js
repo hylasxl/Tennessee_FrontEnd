@@ -1,9 +1,15 @@
 import { Route, Routes } from "react-router-dom";
 
 import HomePage from "../pages/Home/Home";
+import AboutUs from "../pages/Home/AboutUs";
+import Contact from "../pages/Home/Contact";
+import Course from "../pages/Home/Course";
 import LoginPage from "../pages/Login/Login";
 import AccountPage from "../pages/Account/Account";
 import NotFound from "../pages/404NotFound";
+import AccountForgetPassword from "../pages/Account/Account_ForgetPassword";
+import AccountOTP from "../pages/Account/Account_OTP";
+import AccountChangePassword from "../pages/Account/Account_ChangePassword";
 
 import AdminAccountManagementPage from "../pages/Admin/Admin_AccountManagement";
 import AdminAccountManagementUserInfo from "../pages/Admin/Admin_AccountManagement_UserInfo"
@@ -12,6 +18,8 @@ import AdminClassManagement from "../pages/Admin/Admin_ClassManagement";
 import AdminCourseDetail from "../pages/Admin/Admin_CourseDetail";
 import AdminLecturerRequest from "../pages/Admin/Admin_LecturerRequest";
 import AdminStudentRequest from "../pages/Admin/Admin_StudentRequest";
+import AdminHighLevelAccount from "../pages/Admin/Admin_HighLevelAccount";
+import AdminHighLevelAccountAddNew from "../pages/Admin/Admin_HighLevelAccount_AddNew";
 
 
 import EducationalAffairCourseManagement from "../pages/Educational_Affair/Educational_Affair_Course_Management";
@@ -44,6 +52,9 @@ const AppRoutes = () => {
 
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutUs/>}/>
+        <Route path="/contact" element={<Contact/>}/>
+        <Route path="/course" element={<Course/>}/>
         <Route
           path="/login"
           element={<LoginPage page="LOGIN" pageTitle="LOGIN" />}
@@ -51,6 +62,12 @@ const AppRoutes = () => {
 
 
         <Route path='/account' element={<AccountPage />} />
+        <Route path='/account/forget-password' element={<AccountForgetPassword />} />
+        <Route path='/account/password/otp-input' element={<AccountOTP />} />
+        <Route path='/account/password/change-password' element={<AccountChangePassword />} />
+
+
+
         <Route path='/admin/account' element={<AdminAccountManagementPage />} />
         <Route path='/admin/account/user-info/:username' element={<AdminAccountManagementUserInfo />} />
         <Route path='/admin/course' element={<AdminCourseManagement />} />
@@ -58,6 +75,8 @@ const AppRoutes = () => {
         <Route path='/admin/class' element={<AdminClassManagement />} />
         <Route path="/admin/lecturer-request" element={<AdminLecturerRequest/>}/>
         <Route path="/admin/student-request" element={<AdminStudentRequest/>}/>
+        <Route path="/admin/high-level-account" element={<AdminHighLevelAccount/>}/>
+        <Route path="/admin/high-level-account/add-new" element={<AdminHighLevelAccountAddNew/>}/>
 
 
         <Route path='/educational-affair/course' element={<EducationalAffairCourseManagement />} />

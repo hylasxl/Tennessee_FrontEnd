@@ -66,6 +66,9 @@ const AdminNavigation = (props) => {
     const LecturerManagementChildrens = ['/admin/lecturer-request']
     const StudentManagementChildrens = ['/admin/student-request']
     const ClassManagementChildrens = ['/admin/class']
+    const HighAccountChildrens = ['/admin/high-level-account','/admin/high-level-account/add-new']
+
+    const subHigh = props.subHigh || "MAIN_PAGE"
 
     return (
         <>
@@ -74,6 +77,7 @@ const AdminNavigation = (props) => {
                     <Navbar.Brand href="/">Home</Navbar.Brand>
                     <Nav className="me-auto">
                         <Nav.Link href="/admin/account" className={AccountManagementChildrens.includes(window.location.pathname) ? 'active' : ''}>Accounts</Nav.Link>
+                        <Nav.Link href="/admin/high-level-account" className={HighAccountChildrens.includes(window.location.pathname) ? 'active' : ''}>High-level Accounts{subHigh !== "MAIN_PAGE"&& ("-" + subHigh)}</Nav.Link>
                         <div>
                             <StyledBadge overlap='rectangular' badgeContent={courseRequest} color='secondary'>
                                 <span>

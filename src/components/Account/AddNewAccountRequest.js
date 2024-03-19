@@ -1,4 +1,4 @@
-import { Stack, TextField, MenuItem, Button } from "@mui/material"
+import { Stack, TextField, MenuItem, Button, Menu } from "@mui/material"
 import { Fragment, useEffect, useState, useContext } from "react"
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -14,6 +14,8 @@ import { sendNewLecturerAccountRequest } from "../../service/lecturerAccountList
 import { sendNewStudentAccountRequest } from "../../service/studentAccountListService";
 import { useNavigate } from "react-router-dom";
 import { ScheduleSend } from "@mui/icons-material";
+import { addNewHighLevelAccount } from "../../service/accountService";
+
 const AddNewAccountRequest = (props) => {
 
     // const [startDate, setStartDate] = useState(new Date())
@@ -29,16 +31,36 @@ const AddNewAccountRequest = (props) => {
     const [gender, setGender] = useState("Male")
     const [phone, setPhone] = useState("")
     const [address, setAddress] = useState("")
+
+    const [accountType,setAccountType] = useState(1)
+
     const [language, setLanguage] = useState(1)
     const [academicRank, setAcademicRank] = useState(1)
+    
 
     const [allLanguage, setAllLanguage] = useState([])
     const [allAcademicRanks, setAllAcademicRanks] = useState([])
 
+    const handleAdminCreatingAccount = async()=>{
+        return new Promise((resolve,reject)=>{
+            addNewHighLevelAccount(firstName, lastName, email, gender, dateofBirth, phone, address, currentUserId,accountType).then((res)=>{
+                if(+res.EC===1){
+                    resolve()
+                    // navigate('/admin/high-level-account')
+                } else{ 
+                    reject()
+                    toast.error(res.EM)
+                }
+            })
+        })
+    }
+
     const handleGetAllLanguages = async () => {
+        if(role==="admin") return
         return await getAllLanguage()
     }
     const handleGetAllAcademicRanks = async () => {
+        if(role==="admin") return
         return await fetchAllAcademicRanks()
     }
 
@@ -115,6 +137,14 @@ const AddNewAccountRequest = (props) => {
                 toast.error("An error has occured")
             }
         }
+        if(role==="admin"){
+            const promise  = handleAdminCreatingAccount()
+            toast.promise(promise,{
+                pending: 'Sending Mail',
+                success: 'Account created successfully',
+                error: 'Error when fetching',
+            })
+        }
     }
 
     return (
@@ -174,6 +204,9 @@ const AddNewAccountRequest = (props) => {
                     {role === "teacher" && (
                         <Button startIcon={<ScheduleSend/>} className="teacherSend" variant="contained" color="success" onClick={handleSendRequestButton}>Send Request</Button>
                     )}
+                    {role === "admin" && (
+                        <Button startIcon={<ScheduleSend/>} className="adminSend" variant="contained" color="success" onClick={handleSendRequestButton}>Send Request</Button>
+                    )}
                 </Stack>
                 <Stack style={{ width: '50%' }} rowGap={4} className="teacher-info">
                     {role === "teacher" && (
@@ -209,6 +242,23 @@ const AddNewAccountRequest = (props) => {
                                         return (<MenuItem key={index + 1} value={index + 1}>{item.levelName}</MenuItem>)
                                     })
                                 }
+                            </TextField>
+                        </Fragment>
+                    )}
+                    {role==="admin" && (
+                        <Fragment>
+                        <TextField
+                                select
+                                style={{ width: '80%' }}
+                                helperText="Please select type"
+                                size="small"
+                                label="Account Type"
+                                value={accountType}
+                                variant="standard"
+                                onChange={(event) => setAccountType(event.target.value)}
+                            >
+                                <MenuItem value={1}>Admin</MenuItem>
+                                <MenuItem value={2}>Educational Affair</MenuItem>
                             </TextField>
                         </Fragment>
                     )}

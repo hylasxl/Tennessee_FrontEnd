@@ -1,16 +1,18 @@
 import Header from "../../components/Header/Header";
-import React, { useEffect, useState,useContext } from "react";
+import React, { useEffect } from "react";
 import Tags from "../../components/Tags/Tags"
 import Footer from "../../components/Footer/Footer";
 import "./Home.scss";
-// import { UserContext } from "../../context/UserContext";
-import { getUserData } from "../../service/userService";
+import { setUserEnvironment } from "../../service/userService";
 
 const HomePage = (props) => {
-    const mainPicture = require("../../assets/main-img.jpeg");
-    
-   
 
+
+    useEffect(()=>{
+        setUserEnvironment()
+    },[])
+
+    const mainPicture = require("../../assets/main-img.jpeg");
     return (
         <>
             <Header/>

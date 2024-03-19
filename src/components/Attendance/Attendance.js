@@ -19,7 +19,7 @@ const Attendance = (props) => {
     const [isDataChanged, setIsDataChanged] = useState(false)
     const [isPageLoaded, setIsPageLoaded] = useState(false)
     const [initData, setInitData] = useState([])
-    const [isUpdated, setIsUpdated]=useState(false)
+    const [isUpdated, setIsUpdated] = useState(false)
 
     useEffect(() => {
         setIsUpdated(false)
@@ -45,8 +45,8 @@ const Attendance = (props) => {
                 }, 1000)
             })
         }
-        
-    }, [lecturerId, classId,isUpdated])
+
+    }, [lecturerId, classId, isUpdated])
 
     const handleCheckboxChange = (idIndex, dayIndex) => {
         setIsChecked(prevState => {
@@ -72,7 +72,10 @@ const Attendance = (props) => {
                 let tempArr = []
                 const result = data.filter(item => item.studentId === id)
                 result.forEach(item => {
-                    tempArr.push(item.status === 1 ? true : false)
+                    if (item.status === 1) tempArr.push(true)
+                    if (item.status === 0) tempArr.push(false)
+                    if (item.status === 2) tempArr.push("excused")
+
                 })
                 checkedState.push(tempArr)
             })
@@ -91,8 +94,17 @@ const Attendance = (props) => {
 
     const handleCheckAttendance = async () => {
         const copyArr = isChecked.map(row =>
-            row.map(value => value ? 1 : 0)
+            row.map(value => {
+                if (value === 'excused') {
+                    return 2;
+                } else if (typeof value === 'boolean') {
+                    return value ? 1 : 0;
+                } else {
+                    return value;
+                }
+            })
         );
+
         let result = attendance.map((obj, index) => {
             const newObj = { ...obj };
             newObj.status = copyArr[Math.floor(index / copyArr[0].length)][index % copyArr[0].length];
@@ -106,8 +118,9 @@ const Attendance = (props) => {
             percentageMap[studentId] += status;
         });
         Object.keys(percentageMap).forEach(studentId => {
-            const countOfStatus = percentageMap[studentId];
-            const total = result.filter(item => item.studentId === parseInt(studentId)).length;
+            const items = result.filter(item => item.studentId === parseInt(studentId));
+            const countOfStatus = items.reduce((count, item) => (item.status === 1 || item.status === 2) ? count + 1 : count, 0);
+            const total = items.length;
             const percentage = countOfStatus / total;
             result.forEach(item => {
                 if (item.studentId === parseInt(studentId)) {
@@ -115,9 +128,9 @@ const Attendance = (props) => {
                 }
             });
         });
-        
+
         await checkAttendance(result).then((res) => {
-            if(+res.EC===1){
+            if (+res.EC === 1) {
                 toast.success("Update Successfully")
                 setIsUpdated(true)
             } else {
@@ -131,41 +144,42 @@ const Attendance = (props) => {
         <>
             {isPageLoaded && classId && (
                 <TableContainer component={Paper}>
-                <Table>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>
-                                <Button variant='contained' color='primary' disabled={!isDataChanged} onClick={() => handleCheckAttendance()}>Save Changes</Button>
-                            </TableCell>
-                            {dateList.map((day, index) => (
-                                <TableCell key={index} style={{ fontWeight: 'bold', fontSize: 16 }}>{day}</TableCell>
-                            ))}
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {idSet.map((id, idIndex) => (
-                            <TableRow key={idIndex}>
-                                <TableCell component="th" scope="row" style={{ fontWeight: 'bold', fontSize: 16 }}>
-                                    {nameList[idIndex]}
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>
+                                    <Button variant='contained' color='primary' disabled={!isDataChanged} onClick={() => handleCheckAttendance()}>Save Changes</Button>
                                 </TableCell>
-                                {dateList.map((date, dayIndex) => (
-                                    <TableCell key={dayIndex}>
-                                        {isChecked && isChecked.length > 0 && (
-                                            <Checkbox
-                                                color="primary"
-                                                checked={isChecked[idIndex][dayIndex]}
-                                                onChange={() => {
-                                                    handleCheckboxChange(idIndex, dayIndex)
-                                                }}
-                                            />
-                                        )}
-                                    </TableCell>
+                                {dateList.map((day, index) => (
+                                    <TableCell key={index} style={{ fontWeight: 'bold', fontSize: 16 }}>{day}</TableCell>
                                 ))}
                             </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>)}
+                        </TableHead>
+                        <TableBody>
+                            {idSet.map((id, idIndex) => (
+                                <TableRow key={idIndex}>
+                                    <TableCell component="th" scope="row" style={{ fontWeight: 'bold', fontSize: 16 }}>
+                                        {nameList[idIndex]}
+                                    </TableCell>
+                                    {dateList.map((date, dayIndex) => (
+                                        <TableCell key={dayIndex}>
+                                            {isChecked && isChecked.length > 0 && (
+                                                <Checkbox
+                                                    color="primary"
+                                                    checked={isChecked[idIndex][dayIndex]}
+                                                    onChange={() => {
+                                                        handleCheckboxChange(idIndex, dayIndex)
+                                                    }}
+                                                    disabled={isChecked[idIndex][dayIndex] === "excused"}
+                                                />
+                                            )}
+                                        </TableCell>
+                                    ))}
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>)}
             {!isPageLoaded && (
                 <div style={{
                     display: 'flex',

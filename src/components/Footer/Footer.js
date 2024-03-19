@@ -1,11 +1,7 @@
 import React from "react";
 import './Footer.scss';
 import { Link } from "react-router-dom";
-
-
-
-
-
+import { FacebookRounded,Instagram,Twitter } from "@mui/icons-material";
 
 const Footer = (props) =>{
     return (
@@ -22,9 +18,10 @@ const Footer = (props) =>{
                 <div className="footer-links d-flex flex-column gap-3">
                     <h5>FOLLOW US</h5>
                     <div className="d-flex flex-row gap-4">
-                        <Link className="links" to="/">ENROLL NOW</Link>
-                        <Link className="links" to="/">POLICIES AND CHILD SAFETY</Link>
-                        <Link className="links" to="/">CONTACT US</Link>
+                        <Link className="links" to="/"><FacebookRounded sx={{fontSize:'40px'}}/></Link>
+                        <Link className="links" to="/"><Instagram sx={{fontSize:'40px'}}/></Link>
+                        <Link className="links" to="/"><Twitter sx={{fontSize:'40px'}}/></Link>
+                        
                     </div>
                 </div>
                 <div className="footer-desc d-flex flex-row gap-2">

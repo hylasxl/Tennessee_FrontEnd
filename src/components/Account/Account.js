@@ -8,12 +8,17 @@ import localeEn from "air-datepicker/locale/en";
 import { updateUserData } from "../../service/userService";
 import { Modal, Button, Form } from "react-bootstrap";
 import { changePassword } from '../../service/userService'
+import { fetchAvatar } from '../../service/accountService'
+import { changeAvatar } from "../../service/accountService";
 import "./Account.scss";
 
 export const Account = () => {
     const { user, loginContext } = useContext(UserContext);
+    const currentId = user.user.userId
     const [isChangeButtonShow, setIsChangeButtonShow] = useState(false);
     const [isPasswordModalShow, setIsPasswordModalShow] = useState(false);
+    const [imgPath, setImgPath] = useState("")
+    const [img, setImg] = useState("")
 
     const [userData, setUserData] = useState({
         firstName: "",
@@ -50,8 +55,6 @@ export const Account = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // console.log(user);
-        // console.log(2);
         if (user && user.user && user.user.userData) {
             const {
                 firstName,
@@ -95,6 +98,16 @@ export const Account = () => {
             handleInputChange("dateofBirth", formatDate(formattedDate.date));
         },
     });
+
+
+    useEffect(() => {
+        if (currentId) {
+            fetchAvatar(currentId).then((res) => {
+                if (res.DT.imagePath === "DEFAULT") setImgPath("https://res.cloudinary.com/dhvrqrqpc/image/upload/v1710740387/DefaultAvatar.jpg")
+                else setImgPath(res.DT.imagePath)
+            })
+        }
+    }, [currentId])
 
     const handleChangeUserData = async () => {
         if (!userData.firstName || !userData.firstName === "") {
@@ -193,11 +206,44 @@ export const Account = () => {
         if (+(await data).EC === 0) {
             toast.error("Your current password is not correct")
             return;
-        } else if (+(await data).EC === 1){
+        } else if (+(await data).EC === 1) {
             toast.success("Your password has been changed")
             setIsPasswordModalShow(false);
         }
     }
+
+    useEffect(() => {
+        if (img) {
+            const result = async () => {
+                return new Promise(async (resolve, reject) => {
+                    changeAvatar(currentId, img).then((res) => {
+                        if (res.EC === 1) {
+                            toast.success("Change avatar successfully")
+                            return res.EC
+                        } else {
+                            toast.error("An error has occured")
+                            return res.EC
+                        }
+                    }).then((code) => {
+                        if (code === 1) {
+                            resolve()
+                            setTimeout(() => {
+                                window.location.reload()
+                            }, 2000)
+                        }
+                        else reject()
+                    })
+                })
+            }
+            const promise = result()
+            toast.promise(promise, {
+                pending: 'Uploading Images',
+                success: 'Upload Successfully',
+                error: 'Error when uploading',
+            })
+
+        }
+    }, [img])
 
     return (
         <>
@@ -344,19 +390,34 @@ export const Account = () => {
                         <div className="avatar d-flex flex-column">
                             <img
                                 className="user-img"
-                                width={120}
-                                height={120}
-                                src=""
+                                width={150}
+                                height={150}
+                                src={imgPath}
                                 alt="UserImg"
+                                style={{
+                                    marginLeft: '60px', 
+                                    marginBottom: '20px', 
+                                    objectFit: 'contain',
+                                    cursor:'pointer'
+                                }}
+                                onClick={(e)=>{
+                                    window.open(e.target.src)
+                                }}
                             />
-                            <button className="avt-btn">Click to change avatar</button>
+                            <div>
+                                <button className="avt-btn" onClick={() => {
+                                    document.getElementById("avatar-choose").click();
+                                }}>Click to change avatar
+                                    <input type="file" id='avatar-choose' style={{ display: 'none' }} accept=".jpg, .jpeg, .png" onChange={(e) => setImg(e.target.files[0])} />
+                                </button>
+                            </div>
                         </div>
 
                         <div className="action d-flex flex-column gap-3">
                             <button className="changePassword" onClick={() => handleShow()}>
                                 Change Password
                             </button>
-                            <button className="deactivate">Deactivate Account</button>
+
                         </div>
                     </div>
                 </div>

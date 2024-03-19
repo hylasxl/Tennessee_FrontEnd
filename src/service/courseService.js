@@ -28,10 +28,6 @@ const sendRequestCreateCourse = async (
     formData.append('lesson',lesson)
     formData.append('userId',userId)
 
-    for(var pair of formData.entries()) {
-        console.log(pair[0]+ ', '+ pair[1]); 
-     }
-
     return await axios.post('/api/course/create-course', formData ,{
         headers:{
             'Content-Type': 'multipart/form-data',
