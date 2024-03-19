@@ -4,6 +4,7 @@ import HomePage from "../pages/Home/Home";
 import AboutUs from "../pages/Home/AboutUs";
 import Contact from "../pages/Home/Contact";
 import Course from "../pages/Home/Course";
+import ClassDetail from "../pages/Home/Class_Detail";
 import LoginPage from "../pages/Login/Login";
 import AccountPage from "../pages/Account/Account";
 import NotFound from "../pages/404NotFound";
@@ -55,6 +56,7 @@ const AppRoutes = () => {
         <Route path="/about" element={<AboutUs/>}/>
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/course" element={<Course/>}/>
+        <Route path="/class-detail" element={<ClassDetail/>}/>
         <Route
           path="/login"
           element={<LoginPage page="LOGIN" pageTitle="LOGIN" />}

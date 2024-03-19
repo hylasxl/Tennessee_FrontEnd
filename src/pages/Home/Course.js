@@ -9,21 +9,20 @@ const Course = () => {
     const [classList, setClassList] = useState([])
     useEffect(() => {
         getAllClass().then(res => {
-            console.log(res.DT);
             setClassList(res.DT)
         })
     }, [])
-    const classInfo = {
-        name: "DI ME MAY",
-        instructor: "TAO nef",
-        time:"55",
-        location:"3243"
-    }
 
     return (
         <>
             <Header />
-                <ClassCard classInfo={classInfo}/>
+            <div style={{padding:'50px',display:'flex',flexWrap:'wrap',justifyContent:'center'}}>
+                {classList.map((item,index)=>{
+                    if(item.approveStatus==="Approved"&&(item.operatingStatus==="Incoming"||item.operatingStatus==="Operating")){
+                        return(<ClassCard classInfo={item}/>)
+                    } else return (<></>)
+                })}
+            </div>
             <Footer />
         </>
     )
