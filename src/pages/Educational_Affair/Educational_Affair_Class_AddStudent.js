@@ -58,7 +58,7 @@ const EducationalAffairClassAddStudent = () => {
                         value={selectedClass}>
                         {
                             classList.map((item, index) => {
-                                if (item.operatingStatus === "Incoming")
+                                if (item.operatingStatus === "Incoming"||"Operating")
                                     return (<MenuItem key={item.id} value={item.id}>{item.className}</MenuItem>)
 
                             })

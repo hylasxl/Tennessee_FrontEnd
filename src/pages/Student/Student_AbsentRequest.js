@@ -46,7 +46,7 @@ const StudentAbsentRequest = () => {
                     value={classId}>
                     {
                         classList.map((item, index) => {
-                            if (item.operatingStatus === "Operating")
+                            if (item.operatingStatus === "Operating"||"Incoming")
                                 return (<MenuItem key={item.id} value={item.id}>{item.className}</MenuItem>)
                             else return (<Fragment></Fragment>)
                         })

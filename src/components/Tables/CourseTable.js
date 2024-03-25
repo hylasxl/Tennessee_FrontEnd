@@ -81,7 +81,17 @@ const CourseTable = (props) => {
             {
                 accessorKey: 'description',
                 header: 'Description',
-                size: 100
+                size: 100,
+                Cell: ({ cell }) => (
+                    <div style={{
+                        width: '200px',
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis'
+                    }}>
+                        {cell.getValue()}
+                    </div>
+                )
             },
 
         ],

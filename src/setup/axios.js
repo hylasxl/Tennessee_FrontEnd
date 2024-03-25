@@ -22,7 +22,7 @@ instance.interceptors.response.use(function (response) {
     switch (status.EC) {
         // authentication (token related issues)
         case 401: {
-            let insecuredPath = ['/','/login','/course','/account/forget-password','/account/password/otp-input','/account/password/change-password']
+            let insecuredPath = ['/','/login','/course','/account/forget-password','/account/password/otp-input','/account/password/change-password','/about','/contact']
             if(insecuredPath.includes(window.location.pathname)){
                 return status.EM
             }

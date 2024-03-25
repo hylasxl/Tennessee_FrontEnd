@@ -170,7 +170,7 @@ const EducationalAffairCreateCourse = () => {
 
         if (data && +data.EC === 1) {
             toast.success("Created course successfully")
-            // navigate('/educational-affair/course')
+            navigate('/educational-affair/course')
         } else if (data && +data.EC !== 1) {
             toast.error("There is an error while creating course")
         }

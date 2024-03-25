@@ -164,19 +164,6 @@ const AccountTable = (props) => {
                 View Profile
             </MenuItem>,
             <MenuItem
-                key={1}
-                onClick={() => {
-                    // Send email logic...
-                    closeMenu();
-                }}
-                sx={{ m: 0 }}
-            >
-                <ListItemIcon>
-                    <Send />
-                </ListItemIcon>
-                Send Email
-            </MenuItem>,
-            <MenuItem
                 key={2}
                 onClick={() => {
 
