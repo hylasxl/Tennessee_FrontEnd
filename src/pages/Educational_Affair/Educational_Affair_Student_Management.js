@@ -1,6 +1,6 @@
 import EducationalAffairNavigation from "../../components/Navigation/Educational_Affair_Navigation/Educational_Affair_Navigation";
 import './Education_Affair.scss'
-import AccountTable from "../../components/Tables/accountTable"
+import AccountTable from "../../components/Tables/AccountTable"
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import { Add,HourglassBottom } from "@mui/icons-material";

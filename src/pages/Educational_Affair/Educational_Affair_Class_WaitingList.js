@@ -1,6 +1,6 @@
 import './Education_Affair.scss'
 import EducationalAffairNavigation from '../../components/Navigation/Educational_Affair_Navigation/Educational_Affair_Navigation'
-import ClassTable from '../../components/Tables/classTable'
+import ClassTable from '../../components/Tables/ClassTable'
 
 const EducationalAffairClassWaitingList = (props) => {
     return (<>

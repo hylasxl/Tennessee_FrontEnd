@@ -1,5 +1,5 @@
 import EducationalAffairNavigation from "../../components/Navigation/Educational_Affair_Navigation/Educational_Affair_Navigation";
-import CourseTable from "../../components/Tables/courseTable";
+import CourseTable from "../../components/Tables/CourseTable";
 import { Button } from "@mui/material";
 import { Add } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";

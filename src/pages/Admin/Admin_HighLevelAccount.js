@@ -1,6 +1,6 @@
 import AdminNavigation from '../../components/Navigation/Admin_Navigation/Admin_Navigation'
 import './Admin.scss'
-import AccountTable from '../../components/Tables/accountTable'
+import AccountTable from '../../components/Tables/AccountTable'
 import { Button } from "@mui/material";
 import { Add } from '@mui/icons-material';
 import { useNavigate } from "react-router-dom";

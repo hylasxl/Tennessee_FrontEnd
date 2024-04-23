@@ -1,5 +1,5 @@
 import AdminNavigation from "../../components/Navigation/Admin_Navigation/Admin_Navigation";
-import ClassTable from "../../components/Tables/classTable";
+import ClassTable from "../../components/Tables/ClassTable";
 const AdminClassManagement = () => {
     return (<>
         <div className="page-container">
